@@ -1,7 +1,16 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <router-view/>
+
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
+    
+	    <nav class="tabs">
+	      <router-link class="tab" :to="{name: 'home'}">首页</router-link>
+	      <router-link class="tab" :to="{name: 'discover'}">发现</router-link>
+	      <router-link class="tab" :to="{name: 'order'}">订单</router-link>
+	      <router-link class="tab" :to="{name: 'my'}">我的</router-link>
+	    </nav>
   </div>
 </template>
 
@@ -12,12 +21,44 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+html, body, #app{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+.tabs{
+  width: 100%;
+  height: 49px;
+  background: palegoldenrod;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+}
+.tabs .tab{
+  flex: 1;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  line-height: 49px;
+  font-size: 14px;
+}
+.tabs .tab.router-link-active{
+  font-size: 16px;
+  font-weight: bold;
+  color: lightcoral;
+}
+.page{
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 49px;
+  background: #fff;
+}
+.page.subpage{
+  bottom: 0;
+  z-index: 5;
+}
+.slideInRight, .slideOutRight{
+    animation-duration: 300ms;
 }
 </style>

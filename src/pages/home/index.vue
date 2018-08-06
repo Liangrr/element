@@ -1,6 +1,6 @@
 <template>
-	<div>
-		这是订单
+	<div id="home">
+		这是home
 	</div>
 </template>
 

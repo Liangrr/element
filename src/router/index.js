@@ -1,15 +1,14 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
 Vue.use(Router)
 
 //引入每一个组件
-import Home from '@/components/Home.vue'
-import Discover from '@/components/Discover.vue'
-import Order from '@/components/Order.vue'
-import My from '@/components/My.vue'
+import Home from '@/pages/home/index.vue'
+import Discover from '@/pages/discover/index.vue'
+import Order from '@/pages/order/index.vue'
+import Mine from '@/pages/mine/index.vue'
 
-import Location from '@/components/Location.vue'
-import Goods from '@/components/Goods.vue'
 
 // 配置
 const routes = [
@@ -23,21 +22,9 @@ const routes = [
     // alias: '/',
     component: Home,
     //配置子页面
-    children: [
-      {
-        path: 'location',
-        component: Location
-      },
-      {
-      	path:'goods/:dataSource',
-      	name:'goods1',
-      	component:Goods,
-      }
-    ]
   },
   {
     path: '/discover',
-//  path: '/discover/:type',
     name: 'discover',
     component: Discover
   },
@@ -47,9 +34,9 @@ const routes = [
     component: Order
   },
   {
-    path: '/my',
-    name: 'my',
-    component: My
+    path: '/mine',
+    name: 'mine',
+    component: Mine
   },
   {
     // path: '/',

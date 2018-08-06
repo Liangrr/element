@@ -1,15 +1,11 @@
 <template>
   <div id="app">
-
-    <keep-alive>
-      <router-view></router-view>
-    </keep-alive>
     
 	    <nav class="tabs">
 	      <router-link class="tab" :to="{name: 'home'}">首页</router-link>
 	      <router-link class="tab" :to="{name: 'discover'}">发现</router-link>
 	      <router-link class="tab" :to="{name: 'order'}">订单</router-link>
-	      <router-link class="tab" :to="{name: 'my'}">我的</router-link>
+	      <router-link class="tab" :to="{name: 'mine'}">我的</router-link>
 	    </nav>
   </div>
 </template>
@@ -29,7 +25,8 @@ html, body, #app{
 .tabs{
   width: 100%;
   height: 49px;
-  background: palegoldenrod;
+  /*background:#0085ff;*/
+ 	border-top: 1px solid #ccc;
   position: absolute;
   left: 0;
   bottom: 0;

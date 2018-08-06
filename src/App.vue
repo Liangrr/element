@@ -7,6 +7,9 @@
 	      <router-link class="tab" :to="{name: 'order'}">订单</router-link>
 	      <router-link class="tab" :to="{name: 'mine'}">我的</router-link>
 	    </nav>
+
+    <!--<router-view/>-->
+    
   </div>
 </template>
 
@@ -17,6 +20,7 @@ export default {
 </script>
 
 <style>
+	
 html, body, #app{
   width: 100%;
   height: 100%;
@@ -25,6 +29,7 @@ html, body, #app{
 .tabs{
   width: 100%;
   height: 49px;
+  line-height: 49px;
   /*background:#0085ff;*/
  	border-top: 1px solid #ccc;
   position: absolute;
@@ -35,27 +40,5 @@ html, body, #app{
 .tabs .tab{
   flex: 1;
   text-align: center;
-  line-height: 49px;
-  font-size: 14px;
-}
-.tabs .tab.router-link-active{
-  font-size: 16px;
-  font-weight: bold;
-  color: lightcoral;
-}
-.page{
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 49px;
-  background: #fff;
-}
-.page.subpage{
-  bottom: 0;
-  z-index: 5;
-}
-.slideInRight, .slideOutRight{
-    animation-duration: 300ms;
 }
 </style>

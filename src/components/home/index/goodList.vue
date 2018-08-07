@@ -1,10 +1,10 @@
 <template>
     <nav id="goodlist">
-        <li class="list">
+        <li class="list" v-for="(item,index) in listData[0]" :key="index" ref='list'>
             <div class="box-left">
                 <img src="//fuss10.elemecdn.com/0/35/11f89c92c5e17dd0aa4b0384c9959jpeg.jpeg?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/" alt="">            
             </div>
-            <p class="shopname"><span>品牌</span>华莱士炸鸡堡</p>
+            <p class="shopname"><span>品牌</span>{{item.name}}</p>
             <p class="order">月售163单</p>
             <p class="nav">
                 <ul class="ul-left">
@@ -18,7 +18,7 @@
             </p>
             <p class="discover"><span>汉堡</span>口碑人气好店</p>
             <p class="activity item-1"><span>首</span>新用户首单减17元</p>
-            <p class="activity item-1"><span>减</span>满28减5元，满50减13元</p>
+            <p class="activity item-2"><span>减</span>满28减5元，满50减13元</p>
             <div class="box">12个活动</div>
          </li>
     </nav>
@@ -26,20 +26,15 @@
 
 <script>
 export default {
+    data(){
+        console.log(this.listData)
+        return {
+
+        }
+    },
     props:{
         listData:Array,
     },
-    mounted(){
-        // console.log(this.listData.length)
-        this.$nextTick(()=>{
-            //  console.log(this.listData.length)
-            // this.$refs.list = this.$refs.list;
-        })
-        // console.log(this.listData.length)
-    },
-    updated(){
-         console.log(this.listData.length)
-    }
 }
 </script>
 
@@ -139,7 +134,7 @@ img{
     background:rgb(112, 188, 70);
 }
 .item-2 span{
-    background-color: rgb(240, 115, 115);
+    background: rgb(240, 115, 115);
 }
 .box{
     position:absolute;

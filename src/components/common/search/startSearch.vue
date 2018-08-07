@@ -2,7 +2,9 @@
 <div>
     <div id="startSearch">
         <div class="seekHead">
-            <b class="iconfont icon-zuo leftArrow" @click="getBack()"></b>
+
+            <b class="iconfont icon-zuo leftArrow" @click="backAction()"></b>
+
             <p>
                 <span class="iconfont icon-sousuo"></span>
                 <input type="text" placeholder="输入商家、商家名称">
@@ -40,7 +42,7 @@ export default {
             this.historical = itemSearch_word;
             console.log(this.historical)
         },
-        getBack(){
+        backAction(){
             this.$router.back()
         }
     },

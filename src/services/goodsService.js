@@ -83,8 +83,7 @@ export function getHomeBannerData(){
                     }
                 }
 			resolve({
-                data1,
-                data2
+                data1,data2
             })
         })
         .catch(error=>{
@@ -121,12 +120,10 @@ export function getHomeGoodListData(){
                     return {
                         name: item.restaurant.name,
                         
-
-
                     }
                })
-            // console.log(response)
-            // console.log(goodsList)
+            console.log(response)
+            resolve(goodsList)
             })
         })
         .catch(error=>{

@@ -1,17 +1,14 @@
 <template>
 <div>
 	<div id="appNav">
-		<transition name="fade">
-	    	<div class="small-cover" v-show="isShow" @click="navAction()"></div>
-	    </transition>
-		<!--nav导航-->
+
 		<ul class="nav">
 			<li @click="navAction('sorting')">{{sort}}</li>
 			<li v-for="(item,index) in outsideSort" :key="index">{{item.name}}</li>
 			<li @click="navAction('selecting')">筛选</li>
 		</ul>
 		<!--显示综合排序详情-->
-		<ul class="sort" v-if="isShow=='sorting'">
+		<ul class="sort" :class='{}' v-if="isShow=='sorting'">
 			<li v-for="(item,index) in insiteSort" :key="index">{{item.name}}</li>
 		</ul>
 		<!--显示筛选详情-->
@@ -72,27 +69,9 @@ export default{
 </script>
 
 <style scoped="scoped">
-.small-cover{
-    width: 100%;
-    position: fixed;
-    top: 50px;
-    bottom: 0;
-    left: 0;
-    background: rgba(0,0,0,0.3);
-}
-.fade-enter-active{
-    animation: fadeIn 200ms;
-}
-.fade-leave-active{
-    animation: fadeOut 200ms;
-}
+
 #appNav{
 	width: 100%;
-	position: absolute;
-	top: 50px;
-	left: 0;
-	/*这里注释了导航隐藏*/
-	display: none;
 }
 .nav{
 	width: 100%;
@@ -108,10 +87,11 @@ export default{
 .nav li{
 	flex: 1;
 	text-align: center;
-	font-size: 14px;
+	font-size: 12px;
 }
 .sort{
 	position: relative;
+	font-size: 12px;
 	z-index: 10;
 	background-color: white;
 }
@@ -120,7 +100,7 @@ export default{
 	line-height: 50px;
 	text-align: left;
 	padding-left: 5%;
-	font-size: 14px;
+	font-size: 12px;
 }
 .select{
 	width: 100%;
@@ -150,5 +130,8 @@ export default{
 	margin-bottom: 10px;
     height: 30px;
     line-height: 30px;
+}
+.active{
+	display: block;
 }
 </style>

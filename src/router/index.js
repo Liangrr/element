@@ -10,7 +10,7 @@ import Order from '@/pages/order/index.vue'
 import Mine from '@/pages/mine/index.vue'
 
 import StartSearch from '@/components/common/search/startSearch.vue'
-
+import Collect from '@/components/location/collect.vue'
 
 // 配置
 const routes = [
@@ -44,6 +44,11 @@ const routes = [
     path: '/startSearch',
     name: 'startSearch',
     component: StartSearch
+  },
+  {
+  	path:'/collect',
+  	name:'collect',
+  	component:Collect
   },
   {
     // path: '/',

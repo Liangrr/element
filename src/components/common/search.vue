@@ -32,6 +32,7 @@ export default {
     background: #0af;   
     padding: 6px 14px;
     box-sizing: border-box;
+    margin-top: -1px;
 }
 #search > p {
     width: 100%;

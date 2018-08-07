@@ -3,6 +3,9 @@
         <div class="categories">
             <div class="categoriesList" v-for="item in data" :key="item.id">{{item.name}}</div>
         </div>
+        <div>
+            
+        </div>
     </div>
 </template>
 

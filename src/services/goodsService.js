@@ -44,6 +44,7 @@ export function getScreenData(){
 	return new Promise((resolve,reject)=>{
 		axios.get(API.SCREEN_API)
 		.then(response=>{
+			console.log(response)
 //			获得数据
 	        resolve(response.data);
 		})

@@ -37,7 +37,7 @@ export default {
     height:105px;
     margin:0 2px;
     padding-left:10px;
-    background: palegoldenrod;
+    background: #f7f7f7;
     position:relative;
     padding-top:5px;
 }

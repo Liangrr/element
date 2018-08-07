@@ -10,7 +10,10 @@ import Order from '@/pages/order/index.vue'
 import Mine from '@/pages/mine/index.vue'
 
 import StartSearch from '@/components/common/search/startSearch.vue'
+
 import Cate from '@/components/home/index/banner/cate.vue'
+
+import Collect from '@/components/location/collect.vue'
 
 
 // 配置
@@ -50,6 +53,11 @@ const routes = [
     path: '/cate',
     name: 'cate',
     component: Cate
+  },
+  {
+  	path:'/collect',
+  	name:'collect',
+  	component:Collect
   },
   {
     // path: '/',

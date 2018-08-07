@@ -32,7 +32,6 @@ html, body, #app{
   width: 100%;
   height: 49px;
   line-height: 49px;
-  /*background:#0085ff;*/
  	border-top: 1px solid #ccc;
   position: absolute;
   left: 0;

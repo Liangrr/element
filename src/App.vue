@@ -26,6 +26,7 @@ html, body, #app{
   width: 100%;
   height: 100%;
   overflow: hidden;
+  background-color: white;
 }
 .tabs{
   width: 100%;
@@ -36,6 +37,8 @@ html, body, #app{
   position: absolute;
   left: 0;
   bottom: 0;
+  z-index: 99;
+  background-color: white;
   display: flex;
 }
 .tabs .tab{

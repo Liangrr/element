@@ -1,8 +1,15 @@
 <template>
+	<div id="locat">
+		
+	</div>
 </template>
 
 <script>
 </script>
 
-<style>
+<style scoped>
+#locat{
+	width: 100%;
+	
+}
 </style>

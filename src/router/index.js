@@ -10,7 +10,11 @@ import Order from '@/pages/order/index.vue'
 import Mine from '@/pages/mine/index.vue'
 
 import StartSearch from '@/components/common/search/startSearch.vue'
+
+import Cate from '@/components/home/index/banner/cate.vue'
+
 import Collect from '@/components/location/collect.vue'
+
 
 // 配置
 const routes = [
@@ -40,10 +44,15 @@ const routes = [
     name: 'mine',
     component: Mine
   },
-  {
+  {//搜索页面
     path: '/startSearch',
     name: 'startSearch',
     component: StartSearch
+  },
+  {//美食页面
+    path: '/cate',
+    name: 'cate',
+    component: Cate
   },
   {
   	path:'/collect',

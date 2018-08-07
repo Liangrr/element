@@ -2,7 +2,9 @@
 <div>
     <div id="startSearch">
         <div class="seekHead">
+
             <b class="iconfont icon-zuo leftArrow" @click="backAction()"></b>
+
             <p>
                 <span class="iconfont icon-sousuo"></span>
                 <input type="text" placeholder="输入商家、商家名称">
@@ -64,8 +66,9 @@ export default {
 .seekHead > .leftArrow {
     float : left;
     display: inline-block;
-    padding: 5px;
+    padding: 5px 15px 0 0px;
     font-size: 20px;
+    color: #999;
 }
 .seekHead p {
     width: 70%;
@@ -83,7 +86,7 @@ export default {
     background: #fff;
     border: 0;
     font-weight: 700;
-    padding: 2px 10px;
+    padding: 2px 12px;
     font-size: 17px;
     color: #333;
 }

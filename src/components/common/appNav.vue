@@ -2,10 +2,6 @@
 <div>
 	<div id="appNav">
 
-		<!-- <transition name="fade">
-	    <div class="small-cover" v-show="isShow" @click="navAction()"></div>
-	    </transition> -->
-		<!--nav导航-->
 		<ul class="nav">
 			<li @click="navAction('sorting')">{{sort}}</li>
 			<li v-for="(item,index) in outsideSort" :key="index">{{item.name}}</li>
@@ -19,15 +15,15 @@
 		<div class="select" v-if="isShow=='selecting'">
 			<p>商家服务(可多选)</p>
 			<ul class="service">
-				<li v-for="(item,index) in serviceData">{{item.name}}</li>
+				<li v-for="(item,index) in serviceData" :key="index">{{item.name}}</li>
 			</ul>
 			<p>优惠活动(单选)</p>
 			<ul class="discount">
-				<li v-for="(item,index) in discountData">{{item.name}}</li>
+				<li v-for="(item,index) in discountData" :key="index">{{item.name}}</li>
 			</ul>
 			<p>人均消费</p>
 			<ul class="consume">
-				<li v-for="(item,index) in consumeData">{{item.description}}</li>
+				<li v-for="(item,index) in consumeData" :key="index">{{item.description}}</li>
 			</ul>
 		</div>
 
@@ -73,26 +69,9 @@ export default{
 </script>
 
 <style scoped="scoped">
-.small-cover{
-    width: 100%;
-    position: fixed;
-    top: 50px;
-    bottom: 0;
-    left: 0;
-    background: rgba(0,0,0,0.3);
-}
-.fade-enter-active{
-    animation: fadeIn 200ms;
-}
-.fade-leave-active{
-    animation: fadeOut 200ms;
-}
+
 #appNav{
 	width: 100%;
-	/* position: absolute;
-	top: 50px;
-	left: 0; */
-
 }
 .nav{
 	width: 100%;

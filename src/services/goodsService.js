@@ -75,7 +75,6 @@ export function getHomeBannerData(){
 			resolve({
                 data1,
                 data2,
-
             })
         })
         .catch(error=>{
@@ -112,12 +111,10 @@ export function getHomeGoodListData(){
                     return {
                         name: item.restaurant.name,
                         
-
-
                     }
                })
             console.log(response)
-            console.log(goodsList)
+            resolve(goodsList)
             })
         })
         .catch(error=>{

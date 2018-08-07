@@ -1,9 +1,10 @@
 /*
-接口功能：电影所有详情
-接口参数：__t:时间戳 
+接口功能：
+接口参数：latitude ： 纬度
+        longitude ： 经度
 */
-//const FILMS_API = '/v4/api/film';
+const HOT_SEARCH_WORDS_API = '/restapi/shopping/v3/hot_search_words';
 
 export default {
-//	FILMS_API
+    HOT_SEARCH_WORDS_API
 }

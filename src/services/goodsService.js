@@ -125,8 +125,8 @@ export function getHomeGoodListData(){
 
                     }
                })
-            console.log(response)
-            console.log(goodsList)
+            // console.log(response)
+            // console.log(goodsList)
             })
         })
         .catch(error=>{

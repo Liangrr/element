@@ -5,7 +5,8 @@
 		<app-nav></app-nav>
 
 		<h1>首页</h1>
-		<Banner :data="bannerData"/>  
+		<Banner :data="bannerData"/> 
+        <Hot :datas="hotData" />
 	</div>
 </template>
 
@@ -19,7 +20,7 @@ import AppNav from '@/components/common/appNav.vue';
 import Header from '@/components/common/header.vue';
 import Search from '@/components/common/search.vue';
 
-import {getHomeBannerData} from '../../services/goodsService.js'
+import {getHomeBannerData,getHomeHotData} from '../../services/goodsService.js'
 import Banner from '@/components/home/index/banner.vue'
 
 export default {
@@ -35,11 +36,15 @@ export default {
     data(){
         return {
            bannerData: [],
+           hotData:{}
         }
     },
     mounted(){
         getHomeBannerData().then(({data1,data2})=>{
              this.bannerData = [data1,data2]
+        }),
+        getHomeHotData().then(result=>{
+            this.hotData = result
         })
     }
 }

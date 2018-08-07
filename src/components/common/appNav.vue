@@ -62,7 +62,7 @@ export default{
 			this.outsideSort = {...result.outside_sort_filter};
 		}),
 		getScreenData().then(result=>{
-			console.log(result)
+			// console.log(result)
 		})
 	}
 }

@@ -72,13 +72,23 @@ export function getScreenData(){
 //轮播图
 export function getHomeBannerData(){
     return new Promise((resolve, reject)=>{
-        axios.get('restapi/shopping/openapi/entries?latitude=22.631798&longitude=113.836897&templates[]=main_template&templates[]=favourable_template&templates[]=svip_template&terminal=h5')
+        axios.get('restapi/shopping/openapi/entries', {
+			params: {
+				latitude : 22.631798,
+				longitude : 113.836897,
+				templates : ['main_template', 'favourable_template', 'svip_template'],
+				terminal : 'h5'
+			}
+		})
         .then(response=>{
             let data = []
             let data1 = []
             let data2 = []
             data = response.data[0].entries.map(item=>{
-                return item.name
+                return {
+					name : item.name,
+					id : item.id
+				}
             })
                 for(let i = 0 ; i < data.length; i++){
                     if(i <= 9 ){
@@ -90,8 +100,7 @@ export function getHomeBannerData(){
                 }
 			resolve({
                 data1,
-                data2,
-
+                data2
             })
         })
         .catch(error=>{

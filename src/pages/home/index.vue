@@ -1,5 +1,7 @@
 <template>
+
 	<div id="home">
+        <Head></Head>
 		<Search></Search>
 		<Banner :data="bannerData"/> 
         <Hot :datas="hotData" />
@@ -15,8 +17,7 @@ import Goodlist from '@/components/home/index/goodlist.vue';
 import Hot from '@/components/home/index/hot.vue';
 
 import AppNav from '@/components/common/appNav.vue';
-import Header from '@/components/common/header.vue';
-import Search from '@/components/common/search.vue';
+import Head from '@/components/common/header.vue';
 
 import {getHomeBannerData,getHomeHotData,getHomeGoodListData} from '../../services/goodsService.js'
 import Banner from '@/components/home/index/banner.vue'
@@ -27,8 +28,7 @@ export default {
 		Goodlist,
 		Hot,
 		AppNav,
-		Header,
-		Search,
+		Head,
 		Banner,
 	},
     data(){
@@ -51,6 +51,7 @@ export default {
         })
     }
 }
+
 </script>
 
 <style>

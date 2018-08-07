@@ -3,29 +3,31 @@
 	<div id="appNav">
 
 		<transition name="fade">
-	    <div class="small-cover" v-show="isShow" @click="sortAction"></div>
+	    <div class="small-cover" v-show="isShow" @click="navAction()"></div>
 	    </transition>
-		
+		<!--nav导航-->
 		<ul class="nav">
-			<li @click="sortAction">{{sort}}</li>
-			<li v-for="(item,index) in outsideSort"  :key="index">{{item.name}}</li>
-			<li @click="selectAction">筛选</li>
+			<li @click="navAction('sorting')">{{sort}}</li>
+			<li v-for="(item,index) in outsideSort" :key="index">{{item.name}}</li>
+			<li @click="navAction('selecting')">筛选</li>
 		</ul>
-		<ul class="sort" v-show="isShow">
+		<!--显示综合排序详情-->
+		<ul class="sort" v-if="isShow=='sorting'">
 			<li v-for="(item,index) in insiteSort" :key="index">{{item.name}}</li>
 		</ul>
-		<div class="select">
+		<!--显示筛选详情-->
+		<div class="select" v-if="isShow=='selecting'">
 			<p>商家服务(可多选)</p>
 			<ul class="service">
-				<li></li>
+				<li v-for="(item,index) in serviceData">{{item.name}}</li>
 			</ul>
 			<p>优惠活动(单选)</p>
 			<ul class="discount">
-				<li></li>
+				<li v-for="(item,index) in discountData">{{item.name}}</li>
 			</ul>
 			<p>人均消费</p>
 			<ul class="consume">
-				<li></li>
+				<li v-for="(item,index) in consumeData">{{item.description}}</li>
 			</ul>
 		</div>
 
@@ -42,27 +44,29 @@ export default{
 			sort:'',
 			insiteSort:'',
 			outsideSort:'',
-			isShow:false,
+			isShow:'',
+//			筛选请求的数据
+			discountData:'',
+			consumeData:'',
+			serviceData:'',
 		}
 	},
 	methods:{
-		sortAction(){
-			this.isShow = !this.isShow;
-		},
-		selectAction(){
-			
+		navAction(val){
+			this.isShow = val;
 		}
 	},
 	mounted(){
 		getAppNavData().then(result=>{
-//			console.log(result)
 //			综合排序
 			this.sort = result.inside_sort_filter[0].name;
 			this.insiteSort = {...result.inside_sort_filter};
 			this.outsideSort = {...result.outside_sort_filter};
 		}),
 		getScreenData().then(result=>{
-			console.log(result)
+			this.discountData = [...result.activity_types];
+			this.consumeData = [...result.average_costs];
+			this.serviceData = [...result.supports]
 		})
 	}
 }
@@ -88,6 +92,8 @@ export default{
 	position: absolute;
 	top: 50px;
 	left: 0;
+	/*这里注释了导航隐藏*/
+	display: none;
 }
 .nav{
 	width: 100%;
@@ -124,10 +130,26 @@ export default{
 	color: #666;
 	box-sizing: border-box;
 	background-color: white;
+	position: absolute;
+	z-index: 10;
 }
 .select>p{
 	height: 30px;
 	line-height: 30px;
 }
-
+.select>ul{
+	width: 100%;
+	text-align:center;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+.select>ul>li{
+	width: 30%;
+	margin-right: 3%;
+    background: #fafafa;
+	margin-bottom: 10px;
+    height: 30px;
+    line-height: 30px;
+}
 </style>

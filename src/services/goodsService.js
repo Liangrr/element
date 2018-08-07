@@ -1,5 +1,31 @@
-import axios from 'axios'
-import API from '@/api/index.js'
+
+import axios from 'axios';
+import API from '@/api/index.js';
+
+
+/*
+	请求搜索数据
+	纬度 ： latitude
+	经度 ： longitude
+*/	
+export function getHstSearchWordsData(){
+	return new Promise((resolve,reject) =>{
+		axios.get(API.HOT_SEARCH_WORDS_API,{
+			params : {
+				latitude : 22.547,
+				longitude : 114.085947
+			}
+		})
+		.then (response => {
+			let data = response.data.map(item =>{
+				return {
+					search_word : item.search_word
+				}
+			})
+			resolve(data);
+		})
+	})
+}
 //获得推荐商家
 export function getAppNavData(){
 	return new Promise((resolve,reject)=>{
@@ -23,8 +49,8 @@ export function getScreenData(){
 	        resolve(response.data);
 		})
 		.catch(error=>{
-        	console.log('失败');
-    	})
+			console.log('失败');
+		})
 	})
 }
 
@@ -65,12 +91,32 @@ export function getHomeBannerData(){
                 }
 			resolve({
                 data1,
-                data2
+                data2,
+
             })
         })
         .catch(error=>{
             console.log('失败')
             })
         })
+    }
+
+//hot的数据请求
+export function getHomeHotData(){
+    return new Promise((resolve, reject)=>{
+        axios.get('restapi/shopping/openapi/entries?latitude=22.631798&longitude=113.836897&templates[]=main_template&templates[]=favourable_template&templates[]=svip_template&terminal=h5')
+        .then(response=>{
+            var hotData = response.data[1].entries[0]
+                var hotDatas = {
+                    name: hotData.name,
+                    description: hotData.description,
+                    population: JSON.parse(hotData.more).population,
+                }
+                resolve(hotDatas)
+            })
+        })
+        .catch(error=>{
+            console.log('失败')
+            })
     }
 

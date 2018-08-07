@@ -1,13 +1,12 @@
 <template>
   <div id="app">
-  	
     <router-view/>
     
 	    <nav class="tabs">
-	      <router-link class="tab" :to="{name: 'home'}">首页</router-link>
-	      <router-link class="tab" :to="{name: 'discover'}">发现</router-link>
-	      <router-link class="tab" :to="{name: 'order'}">订单</router-link>
-	      <router-link class="tab" :to="{name: 'mine'}">我的</router-link>
+          <router-link class="tab" :to="{name: 'home'}">首页</router-link>
+          <router-link class="tab" :to="{name: 'discover'}">发现</router-link>
+          <router-link class="tab" :to="{name: 'order'}">订单</router-link>
+          <router-link class="tab" :to="{name: 'mine'}">我的</router-link>
 	    </nav>
 
     

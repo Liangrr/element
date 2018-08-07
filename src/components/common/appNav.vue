@@ -1,18 +1,21 @@
 <template>
 <div>
 	<div id="appNav">
+
 		<transition name="fade">
 	    <div class="small-cover" v-show="isShow" @click="navAction()"></div>
 	    </transition>
-		
+		<!--nav导航-->
 		<ul class="nav">
 			<li @click="navAction('sorting')">{{sort}}</li>
-			<li v-for="(item,index) in outsideSort" >{{item.name}}</li>
+			<li v-for="(item,index) in outsideSort" :key="index">{{item.name}}</li>
 			<li @click="navAction('selecting')">筛选</li>
 		</ul>
+		<!--显示综合排序详情-->
 		<ul class="sort" v-if="isShow=='sorting'">
-			<li v-for="(item,index) in insiteSort">{{item.name}}</li>
+			<li v-for="(item,index) in insiteSort" :key="index">{{item.name}}</li>
 		</ul>
+		<!--显示筛选详情-->
 		<div class="select" v-if="isShow=='selecting'">
 			<p>商家服务(可多选)</p>
 			<ul class="service">
@@ -27,6 +30,7 @@
 				<li v-for="(item,index) in consumeData">{{item.description}}</li>
 			</ul>
 		</div>
+
 	</div>
 </div>
 </template>
@@ -88,6 +92,8 @@ export default{
 	position: absolute;
 	top: 50px;
 	left: 0;
+	/*这里注释了导航隐藏*/
+	display: none;
 }
 .nav{
 	width: 100%;

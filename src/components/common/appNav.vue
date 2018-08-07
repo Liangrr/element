@@ -1,6 +1,6 @@
 <template>
 	<div id="appNav">
-		这是导航
+		阿斯达斯
 	</div>
 </template>
 

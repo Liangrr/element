@@ -37,7 +37,8 @@ export function getHomeBannerData(){
                 }
 			resolve({
                 data1,
-                data2
+                data2,
+
             })
         })
         .catch(error=>{
@@ -45,3 +46,23 @@ export function getHomeBannerData(){
             })
         })
     }
+
+//hot的数据请求
+export function getHomeHotData(){
+    return new Promise((resolve, reject)=>{
+        axios.get('restapi/shopping/openapi/entries?latitude=22.631798&longitude=113.836897&templates[]=main_template&templates[]=favourable_template&templates[]=svip_template&terminal=h5')
+        .then(response=>{
+            var hotData = response.data[1].entries[0]
+                var hotDatas = {
+                    name: hotData.name,
+                    description: hotData.description,
+                    population: JSON.parse(hotData.more).population,
+                }
+                resolve(hotDatas)
+            })
+        })
+        .catch(error=>{
+            console.log('失败')
+            })
+    }
+

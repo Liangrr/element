@@ -119,3 +119,24 @@ export function getHomeHotData(){
             })
     }
 
+//商店列表数据
+export function getHomeGoodListData(){
+    return new Promise((resolve, reject)=>{
+        axios.get('restapi/shopping/v3/restaurants?latitude=22.648565&longitude=113.830707&offset=0&limit=8&extras[]=activities&extras[]=tags&extra_filters=home&rank_id=&terminal=h5')
+        .then(response=>{
+            let goodsList = response.data.items.map(item=>{
+                    return {
+                        name: item.restaurant.name,
+                        
+
+
+                    }
+               })
+            console.log(response)
+            console.log(goodsList)
+            })
+        })
+        .catch(error=>{
+            console.log('失败')
+            })
+    }

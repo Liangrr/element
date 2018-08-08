@@ -122,7 +122,7 @@ export function getHomeGoodListData(){
                         
                     }
                })
-            console.log(response)
+            // console.log(response)
             resolve(goodsList)
             })
         })

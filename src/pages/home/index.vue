@@ -92,12 +92,12 @@ export default {
     text-align:center;
     line-height:20px;
     color:#000;
-    font-size:14px;
+    font-size:13px;
 }
 span{
     display: inline-block;
     height:1px;
     background: #bfbfbf;
-    width:23px;
+    width:16px;
 }
 </style>

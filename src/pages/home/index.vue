@@ -1,12 +1,12 @@
 <template>
 
-	<div id="home">
+<page id="home">
         <Head></Head>
 		<Banner :data="bannerData"/> 
         <Hot :datas="hotData" />
-        <!-- <app-nav></app-nav> -->
+        <app-nav></app-nav>
         <Goodlist :listData="goodLists"/>
-	</div>
+</page>
 </template>
 
 <script>
@@ -46,7 +46,7 @@ export default {
         })
         getHomeGoodListData().then(result=>{
             this.goodLists.push(result)
-            console.log(this.goodLists)
+            console.log(result)
         })
     }
 }

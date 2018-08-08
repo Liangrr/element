@@ -4,6 +4,11 @@
         <Head></Head>
 		<Banner :data="bannerData"/> 
         <Hot :datas="hotData" />
+        <div class="home-box">
+            <span class="box left"></span>
+            <p class="box right">推荐商家</p>
+            <span></span>
+        </div>
         <app-nav></app-nav>
         <Goodlist :listData="goodLists"/>
 </page>
@@ -73,6 +78,26 @@ export default {
 
 </script>
 
-<style>
-
+<style scoped>
+.home-box{
+    width:100%;
+    height:40px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+.home-box p{
+    width:70px;
+    height:20px;
+    text-align:center;
+    line-height:20px;
+    color:#000;
+    font-size:14px;
+}
+span{
+    display: inline-block;
+    height:1px;
+    background: #bfbfbf;
+    width:23px;
+}
 </style>

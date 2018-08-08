@@ -2,7 +2,7 @@
     <nav id="goodlist">
         <li class="list" v-for="(item,index) in listData" :key="index" ref='list'>
             <div class="box-left">
-                <img src="//fuss10.elemecdn.com/0/35/11f89c92c5e17dd0aa4b0384c9959jpeg.jpeg?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/" alt="">            
+                <img :src="item.img" alt="">            
             </div>
             <p class="shopname"><span>品牌</span>{{item.name}}</p>
             <p class="order">月售163单</p>

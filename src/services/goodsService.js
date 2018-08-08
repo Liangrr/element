@@ -124,8 +124,20 @@ export function getHomeGoodListData(count){
         axios.get('restapi/shopping/v3/restaurants?latitude=22.648565&longitude=113.830707&offset='+count+'&limit=8&extras[]=activities&extras[]=tags&extra_filters=home&rank_id=&terminal=h5')
         .then(response=>{
             let goodsList = response.data.items.map(item=>{
+//          	采用字符串拼接,把条件都拼接好
+                let str = item.restaurant.image_path;
+                let ends = '';
+                if(str.endsWith('png'))
+                    ends = '.png'
+                if(str.endsWith('jpeg'))
+                    ends = '.jpeg'
+                
+            	str = 'https://fuss10.elemecdn.com/'
+            	+str[0]+'/'+str.substring(1,3)+'/'+str.substring(3,str.length)
+            	+ends+'?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/';
                 return {
                     name: item.restaurant.name,
+                    img: str
                 }
             })
             resolve(goodsList)

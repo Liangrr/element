@@ -22,7 +22,8 @@ export default {
         let scroll = new IScroll(this.$refs.page, {
             //判断外部是否需要监听正在滚动的位置
             probeType: 3,
-            scrollbars:true
+            scrollbars:true,
+            fadeScrollbars:true,
         });
         this.scroll = scroll;
         scroll.on('beforeScrollStart', ()=>{
@@ -47,4 +48,5 @@ export default {
   bottom: 49px;
   overflow: hidden;
 }
+
 </style>

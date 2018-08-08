@@ -4,10 +4,17 @@
         <Head></Head>
 		<Banner :data="bannerData"/> 
         <Hot :datas="hotData" />
+        
+        <div class="home-box">
+            <span class="box left"></span>
+            <p class="box right">推荐商家</p>
+            <span></span>
+        </div>
         <ul class="nav">
 			<li v-for="(item,index) in navData" :key="index" @click="navAction(index)">{{item}}</li>
 		</ul>
 		<!--<app-nav v-show='isShow' class="appnav"></app-nav>-->
+		
         <Goodlist :listData="goodLists"/>
 </page>
 </template>
@@ -104,10 +111,26 @@ export default {
 	text-align: center;
 	font-size: 12px;
 }
-/*.appnav{
-	width: 100%;
-	position: fixed;
-	top: 50px;
-	left: 0;
-}*/
+
+.home-box{
+    width:100%;
+    height:40px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+.home-box p{
+    width:70px;
+    height:20px;
+    text-align:center;
+    line-height:20px;
+    color:#000;
+    font-size:13px;
+}
+span{
+    display: inline-block;
+    height:1px;
+    background: #bfbfbf;
+    width:16px;
+}
 </style>

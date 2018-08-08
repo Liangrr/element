@@ -1,6 +1,6 @@
 <template>
     <div id="hot">
-        <div class="hot-left">
+        <div class="hot-left" @click="goSetMeal()">
             <p class="left-1">品质套餐</p>
             <p class="left-2">搭配齐全吃的好</p>
             <p class="left-3">立即抢购></p>
@@ -19,6 +19,13 @@
 export default {
     props: {
         datas:Object
+    },
+    methods : {
+        goSetMeal(){
+            this.$router.push(
+                {path : '/SetMeal'}
+            )
+        }
     }
 }
 </script>

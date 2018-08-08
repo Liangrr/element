@@ -1,9 +1,14 @@
 <template>
 
-<page id="home">
+<page id="home" ref="page" @onScroll="homePageScroll">
         <Head></Head>
 		<Banner :data="bannerData"/> 
         <Hot :datas="hotData" />
+        <div class="home-box">
+            <span class="box left"></span>
+            <p class="box right">推荐商家</p>
+            <span></span>
+        </div>
         <app-nav></app-nav>
         <Goodlist :listData="goodLists"/>
 </page>
@@ -35,6 +40,29 @@ export default {
            bannerData: [],
            hotData:{},
            goodLists: [],
+           count:8,
+           page:1,
+           counts:0,
+           bool:false,
+        }
+    },
+    methods:{
+        requestGoodList(){
+            getHomeGoodListData(this.counts).then(result=>{
+                this.goodLists = [...this.goodLists,...result]
+                this.$nextTick(()=>{
+                    this.$refs.page.refreshDOM()
+                     this.page++,
+                     this.counts=this.page*this.count
+                     this.bool = false;
+                })
+            })
+        },
+         homePageScroll(y){
+            if(y<50 && (!this.bool)){
+                this.bool=true;
+                this.requestGoodList(this.count)
+            }   
         }
     },
     mounted(){
@@ -43,15 +71,33 @@ export default {
         }),
         getHomeHotData().then(result=>{
             this.hotData = result
-        })
-        getHomeGoodListData().then(result=>{
-            this.goodLists.push(result)
-            console.log(result)
-        })
+        });
+        this.requestGoodList();
     }
 }
 
 </script>
 
-<style>
+<style scoped>
+.home-box{
+    width:100%;
+    height:40px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+.home-box p{
+    width:70px;
+    height:20px;
+    text-align:center;
+    line-height:20px;
+    color:#000;
+    font-size:13px;
+}
+span{
+    display: inline-block;
+    height:1px;
+    background: #bfbfbf;
+    width:16px;
+}
 </style>

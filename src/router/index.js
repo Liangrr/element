@@ -15,6 +15,8 @@ import Cate from '@/components/home/index/banner/cate.vue'
 
 import Collect from '@/components/location/collect.vue'
 
+import SetMeal from '@/components/home/index/hot/SetMeal.vue'
+
 
 // 配置
 const routes = [
@@ -58,6 +60,11 @@ const routes = [
   	path:'/collect',
   	name:'collect',
   	component:Collect
+  },
+  {
+  	path:'/setMeal',
+  	name:'setMeal',
+  	component:SetMeal
   },
   {
     // path: '/',

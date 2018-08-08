@@ -70,13 +70,20 @@ export function getHomeBannerData(){
         .then(response=>{
             let data = []
             let data1 = []
-            let data2 = []
+            let data2 = [] 
             data = response.data[0].entries.map(item=>{
+//          	采用字符串拼接,把条件都拼接好
+            	let str = item.image_hash;
+            	str = 'https://fuss10.elemecdn.com/'
+            	+str[0]+'/'+str.substring(1,3)+'/'+str.substring(3,str.length)
+            	+'.jpeg?imageMogr/format/webp/thumbnail/!90x90r/gravity/Center/crop/90x90/';
                 return {
 					name : item.name,
-					id : item.id
+					id : item.id,
+					imageUrl:str,
 				}
             })
+            
                 for(let i = 0 ; i < data.length; i++){
                     if(i <= 9 ){
                         data1.push(data[i])
@@ -112,28 +119,37 @@ export function getHomeHotData(){
         .catch(error=>{
             console.log('失败')
             })
-    }
+   }
 
 //商店列表数据
-export function getHomeGoodListData(){
+export function getHomeGoodListData(count){
     return new Promise((resolve, reject)=>{
-        axios.get('restapi/shopping/v3/restaurants?latitude=22.648565&longitude=113.830707&offset=0&limit=8&extras[]=activities&extras[]=tags&extra_filters=home&rank_id=&terminal=h5')
+        axios.get('restapi/shopping/v3/restaurants?latitude=22.648565&longitude=113.830707&offset='+count+'&limit=8&extras[]=activities&extras[]=tags&extra_filters=home&rank_id=&terminal=h5')
         .then(response=>{
             let goodsList = response.data.items.map(item=>{
-                    return {
-                        name: item.restaurant.name,
-                        
-                    }
-               })
-            // console.log(response)
-            resolve(goodsList)
+//          	采用字符串拼接,把条件都拼接好
+                let str = item.restaurant.image_path;
+                let ends = '';
+                if(str.endsWith('png'))
+                    ends = '.png'
+                if(str.endsWith('jpeg'))
+                    ends = '.jpeg'
+                
+            	str = 'https://fuss10.elemecdn.com/'
+            	+str[0]+'/'+str.substring(1,3)+'/'+str.substring(3,str.length)
+            	+ends+'?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/';
+                return {
+                    name: item.restaurant.name,
+                    img: str
+                }
             })
+            resolve(goodsList)
         })
         .catch(error=>{
             console.log('失败')
         })
-    }
-
+    })
+}
 //轮播里的下拉分类数据
 export function getSeleCtionData(){
     return new Promise((resolve , reject) => {
@@ -146,7 +162,6 @@ export function getSeleCtionData(){
         .then(response =>{
             let data = response.data.map(item =>{
                 return {
-                    
                     title : item.name,
                     count : item.count,
                     son_name : item.sub_categories
@@ -159,30 +174,5 @@ export function getSeleCtionData(){
         })
     })
 }
-//轮播里的下拉分类数据
-// export function aaaa(){
-//     return new Promise((resolve , reject) => {
-//         axios.get(API.SELECTION_API,{
-//             params : {
-// 				latitude : 22.54286,
-// 				longitude : 114.059563
-// 			}
-//         })
-//         .then(response =>{
-//             let data = response.data.map(item => {
-//                 return {
-//                     sub_categories : item.sub_categories
-//                 }
-//             })
-//             let aa = data.sub_categories.map(item1 =>{
-//                 return {
-//                     name :item1.name
-//                 }
-//             })
-//             console.log(aa) 
-//         })
-//         .catch(error=>{
-//             console.log('失败')
-//         })
-//     })
-// }
+
+

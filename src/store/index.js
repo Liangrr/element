@@ -4,7 +4,9 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 const state = {
-	city:'定位'
+	city:'定位',
+	cateId:'',
+	shopTitle:'美食',
 }
 
 const mutations = {
@@ -12,7 +14,10 @@ const mutations = {
 		state.city = params.city;
     },
     changeCate(state,params){
-        state.Cate = params.Cate;
+        state.cateId = params.cateId;
+    },
+    changeTitle(state,params){
+    	state.shopTitle = params.shopTitle;
     }
 }
 

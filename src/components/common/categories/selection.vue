@@ -2,13 +2,13 @@
     <div class="selection" v-show="isShow">
         <!-- 蒙版 -->
         <div class="masking">
-            <!-- <h1>asasda</h1> -->
+            
         </div>
 
         <div class="ListBox">
             <div class="tltle">
                 <h4>请选择分类</h4>
-                <span @click="shut()">X</span>
+                <span @click="shut()"><b class="iconfont icon-guanbi"></b></span>
             </div>
 
             <div>

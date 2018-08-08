@@ -16,21 +16,15 @@ export default {
   },
   data() {
     return {
+
     //   categoriesID : this.$store.state.Cate,
       categoriesID : sessionStorage.getItem('itemId'),
-      categoriesData: []    
+      categoriesData: []
     };
   },
   mounted() {
         getSiftFactorsData(this.categoriesID).then(response => {
-            let data = response.data.map(item => {
-                return {
-                name: item.name,
-                id: item.id
-                };
-            });
-            
-             this.categoriesData = data;
+            this.categoriesData = response;
         });
     }
 }

@@ -2,6 +2,7 @@
 <div class="page" ref="page">
     <div class="page-wrap" >
         <slot/>
+        
     </div>
 </div>
 </template>
@@ -32,21 +33,16 @@ export default {
             this.$emit('onScroll',disY)
         })
     }
-
 }
 </script>
 
 <style scoped>
 .page{
-  width: 100%;
-  position: absolute;
-  top:0;
-  left: 0;
-  bottom: 49px;
-  overflow: hidden;
+    width:100%;
+    position:absolute;
+    top:0;
+    left:0;
+    bottom:49px;
+    overflow: hidden;
 }
-.page-wrap{
-
-}
-
 </style>

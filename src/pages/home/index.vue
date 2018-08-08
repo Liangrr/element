@@ -2,7 +2,6 @@
 
 	<div id="home">
         <Head></Head>
-		<Search></Search>
 		<Banner :data="bannerData"/> 
         <Hot :datas="hotData" />
         <!-- <app-nav></app-nav> -->

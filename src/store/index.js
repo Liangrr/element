@@ -6,7 +6,7 @@ Vue.use(Vuex)
 const state = {
 	city:'定位',
 	cateId:'',
-	shopTitle:'美食',
+	title:'美食',
 }
 
 const mutations = {
@@ -17,7 +17,7 @@ const mutations = {
         state.cateId = params.cateId;
     },
     changeTitle(state,params){
-    	state.shopTitle = params.shopTitle;
+    	state.title = params.title;
     }
 }
 

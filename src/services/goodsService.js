@@ -67,7 +67,7 @@ export function getHomeBannerData(){
         .then(response=>{
             let data = []
             let data1 = []
-            let data2 = []
+            let data2 = [] 
             data = response.data[0].entries.map(item=>{
 //          	采用字符串拼接,把条件都拼接好
             	let str = item.image_hash;

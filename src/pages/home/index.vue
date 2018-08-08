@@ -65,26 +65,17 @@ export default {
             })
         },
         homePageScroll(y){
-            if(y.disY<50 && (!this.bool)){
+            if(y<50 && (!this.bool)){
                 this.bool=true;
                 this.requestGoodList(this.count)
 
                 this.isLoad = true
             } 
-            if (y.scrollY<=-350) {
-            	this.isShow = true;
-            	
-            }else if(y.scrollY>-350){
-            	this.isShow = false;
-            }  
         },
         backTopAction(){
            console.log(this.$refs.page.scrollTop)
             
-        },
-        navAction(index){
-        	
-        },
+        }
         
     },
     mounted(){

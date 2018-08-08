@@ -4,12 +4,17 @@
         <Head></Head>
 		<Banner :data="bannerData"/> 
         <Hot :datas="hotData" />
+        
         <div class="home-box">
             <span class="box left"></span>
             <p class="box right">推荐商家</p>
             <span></span>
         </div>
-        <app-nav></app-nav>
+        <ul class="nav">
+			<li v-for="(item,index) in navData" :key="index" @click="navAction(index)">{{item}}</li>
+		</ul>
+		<!--<app-nav v-show='isShow' class="appnav"></app-nav>-->
+		
         <Goodlist :listData="goodLists"/>
 </page>
 </template>
@@ -30,13 +35,14 @@ export default {
 	components:{
 		Location,
 		Goodlist,
-		Hot,
 		AppNav,
+		Hot,
 		Head,
 		Banner,
 	},
     data(){
         return {
+           navData:['综合排序','距离最近','品质联盟','筛选'],
            bannerData: [],
            hotData:{},
            goodLists: [],
@@ -44,6 +50,7 @@ export default {
            page:1,
            counts:0,
            bool:false,
+           isShow:false,
         }
     },
     methods:{
@@ -58,11 +65,20 @@ export default {
                 })
             })
         },
-         homePageScroll(y){
-            if(y<50 && (!this.bool)){
+        homePageScroll(y){
+            if(y.disY<50 && (!this.bool)){
                 this.bool=true;
                 this.requestGoodList(this.count)
-            }   
+            }
+            if (y.scrollY<=-350) {
+            	this.isShow = true;
+            	
+            }else if(y.scrollY>-350){
+            	this.isShow = false;
+            }
+        },
+        navAction(index){
+        	
         }
     },
     mounted(){
@@ -79,6 +95,23 @@ export default {
 </script>
 
 <style scoped>
+.nav{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	background-color: white;
+	position: relative;
+	z-index: 10;
+	display: flex;
+}
+.nav li{
+	flex: 1;
+	text-align: center;
+	font-size: 12px;
+}
+
 .home-box{
     width:100%;
     height:40px;

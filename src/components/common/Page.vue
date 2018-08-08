@@ -38,11 +38,20 @@ export default {
 
 <style scoped>
 .page{
+<<<<<<< HEAD
     width:100%;
     position:absolute;
     top:0;
     left:0;
     bottom:49px;
     overflow: hidden;
+=======
+  width: 100%;
+  position: absolute;
+  top:0;
+  left: 0;
+  bottom: 49px;
+  overflow: hidden;
+>>>>>>> 894426579d24d6f6efc93b2e0855ba260e27d4f3
 }
 </style>

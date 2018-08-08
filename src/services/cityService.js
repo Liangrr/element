@@ -6,7 +6,7 @@ export function getCityData(){
 	return new Promise((resolve,reject)=>{
 		axios.get(API.CITY_API)
 		.then(response=>{
-//			console.log(response)
+
 //			获得数据
 	        resolve(response.data);
 		})

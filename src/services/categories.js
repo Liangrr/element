@@ -2,6 +2,7 @@ import axios from 'axios';
 
 
 export function getSiftFactorsData(categoriesID){
+
     const SIFT_FACTORS_API = '/restapi/shopping/v2/foods_page/sift_factors';
     return new Promise((resolve,reject) => {
         axios.get(SIFT_FACTORS_API,{

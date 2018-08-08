@@ -23,7 +23,10 @@ export function getHstSearchWordsData(){
 				}
 			})
 			resolve(data);
-		})
+        })
+        .catch(error=>{
+        	console.log('失败');
+    	})
 	})
 }
 //获得推荐商家
@@ -128,5 +131,58 @@ export function getHomeGoodListData(){
         })
         .catch(error=>{
             console.log('失败')
-            })
+        })
     }
+
+//轮播里的下拉分类数据
+export function getSeleCtionData(){
+    return new Promise((resolve , reject) => {
+        axios.get(API.SELECTION_API,{
+            params : {
+				latitude : 22.54286,
+				longitude : 114.059563
+			}
+        })
+        .then(response =>{
+            let data = response.data.map(item =>{
+                return {
+                    
+                    title : item.name,
+                    count : item.count,
+                    son_name : item.sub_categories
+                }
+            })
+            resolve(data)
+        })
+        .catch(error=>{
+            console.log('失败')
+        })
+    })
+}
+//轮播里的下拉分类数据
+// export function aaaa(){
+//     return new Promise((resolve , reject) => {
+//         axios.get(API.SELECTION_API,{
+//             params : {
+// 				latitude : 22.54286,
+// 				longitude : 114.059563
+// 			}
+//         })
+//         .then(response =>{
+//             let data = response.data.map(item => {
+//                 return {
+//                     sub_categories : item.sub_categories
+//                 }
+//             })
+//             let aa = data.sub_categories.map(item1 =>{
+//                 return {
+//                     name :item1.name
+//                 }
+//             })
+//             console.log(aa) 
+//         })
+//         .catch(error=>{
+//             console.log('失败')
+//         })
+//     })
+// }

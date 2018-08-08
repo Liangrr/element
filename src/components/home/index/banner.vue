@@ -32,6 +32,7 @@ export default {
 		//跳转美食界面
 		goCate(itemId){
 			this.$store.state.Cate = itemId;
+			sessionStorage.setItem('itemId',itemId)
 			this.$router.push(
                 {path: '/Cate'}
             )

@@ -1,26 +1,40 @@
 <template>
-    <div class="categoriesBox">
-        <div class="categories">
-            <div class="categoriesList" v-for="item in data" :key="item.id">{{item.name}}</div>
+    <div>
+        <div class="categoriesBox">
+            <div class="categories">
+                <div class="categoriesList" v-for="item in data" :key="item.id">{{item.name}}</div>
+            </div>
+            <div class="categoriesPull" @click="dropDown()">
+                <button class="drop"><span class="iconfont icon-plus-select-down"></span></button>
+            </div>
         </div>
-        <div class="categoriesPull" @click="dropDown()">
-            <button class="drop"><span class="iconfont icon-plus-select-down"></span></button>
-        </div>
+        <Selection v-show="isShow"></Selection>
     </div>
 </template>
-
 <script>
+import Selection from '@/components/common/categories/selection.vue'
 export default {
+    components : {
+        Selection
+    },
     props:{
         data : Array
     },
-    methods : {
-        dropDown(){
-            alert(1)
+    data(){
+        return{
+            isShow : false,
         }
     },
-    mounted(){
-        
+    methods : {
+        dropDown(){
+            this.isShow = true;
+            console.log(this.isShow)
+        }
+    },
+    created(){
+        this.$center.$on('show',(result)=>{
+            this.isShow = result
+        })
     }
 }
 </script>

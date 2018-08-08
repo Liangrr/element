@@ -45,8 +45,4 @@ export default {
   bottom: 49px;
   overflow: hidden;
 }
-.page-wrap{
-
-}
-
 </style>

@@ -55,10 +55,8 @@ export default {
         },
          homePageScroll(y){
             if(y<50 && (!this.bool)){
-                console.log(1)
                 this.bool=true;
                 this.requestGoodList(this.count)
-                console.log(y)
             }   
         }
     },
@@ -68,10 +66,8 @@ export default {
         }),
         getHomeHotData().then(result=>{
             this.hotData = result
-        })
-        getHomeGoodListData().then(result=>{
-            this.goodLists.push(result)
-        })
+        });
+        this.requestGoodList();
     }
 }
 

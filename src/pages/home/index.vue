@@ -69,7 +69,9 @@ export default {
         getHomeHotData().then(result=>{
             this.hotData = result
         })
-        this.requestGoodList()
+        getHomeGoodListData().then(result=>{
+            this.goodLists.push(result)
+        })
     }
 }
 

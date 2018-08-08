@@ -33,10 +33,16 @@ const SCREEN_API = '/restapi/shopping/v1/restaurants/filter-bar/attributes?latit
 接口参数：
 */
 const CITY_API = '/restapi/bgs/poi/reverse_geo_coding?latitude=22.547&longitude=114.085947';
-
+/*
+接口功能：商品品种数据接口
+接口参数：
+*/
+const SIFT_FACTORS_API = '/restapi/shopping/v2/foods_page/sift_factors';
 export default {
 	APPNAV_API,
     SCREEN_API,
     HOT_SEARCH_WORDS_API,
-	CITY_API    
+	CITY_API,
+	SIFT_FACTORS_API,
+	
 }

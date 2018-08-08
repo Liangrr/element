@@ -27,9 +27,8 @@
 <script>
 export default {
     data(){
-        // console.log(this.listData)
         return {
-
+        	
         }
     },
     props:{

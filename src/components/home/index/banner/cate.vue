@@ -14,20 +14,13 @@ export default {
   },
   data() {
     return {
-      categoriesID : this.$store.state.Cate,
+      categoriesID : this.$store.state.cateId || 20004689 ,
       categoriesData: []
     };
   },
   mounted() {
         getSiftFactorsData(this.categoriesID).then(response => {
-            let data = response.data.map(item => {
-                return {
-                name: item.name,
-                id: item.id
-                };
-            });
-            
-             this.categoriesData = data;
+            this.categoriesData = response;
         });
     }
 }

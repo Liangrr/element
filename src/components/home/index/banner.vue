@@ -2,14 +2,14 @@
 <div class="swiper-container">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
-			<li v-for="(item,index) in data[0]" :key="index" @click="goCate(item.id)">
-				<img src="https://fuss10.elemecdn.com/7/d8/a867c870b22bc74c87c348b75528djpeg.jpeg" alt="" >
+			<li v-for="item in data[0]" :key="item.id" @click="goCate(item.id)">
+				<img :src="item.imageUrl"/>
 				{{item.name}}
 			</li>
 		</div>
         <div class="swiper-slide">
-			<li v-for="(item,index) in data[1]" :key="index">
-				<img src="https://fuss10.elemecdn.com/7/d8/a867c870b22bc74c87c348b75528djpeg.jpeg" alt="">
+			<li v-for="item in data[1]" :key="item.id" @click="goCate(item.id)">
+				<img :src="item.imageUrl"/>
 				{{item.name}}
 			</li>
 		</div>
@@ -29,9 +29,12 @@ export default {
         }
 	},
 	methods : {
-		//跳转美食界面
-		goCate(itemId){
-			this.$store.state.Cate = itemId;
+		//跳转商品品种界面
+		goCate(cateId){
+//			把商品品种存起来
+			this.$store.commit('changeCate',{
+				cateId
+			})
 			this.$router.push(
                 {path: '/Cate'}
             )

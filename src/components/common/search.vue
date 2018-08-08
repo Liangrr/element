@@ -28,7 +28,7 @@ export default {
 <style scoped>
 #search{
     width: 100%;
-    height: 54px;
+    height: 46px;
     background: #0af;   
     padding: 6px 14px;
     box-sizing: border-box;
@@ -39,7 +39,8 @@ export default {
     height: 100%;
     text-align: center;
     background: #fff;
-    line-height: 40px;
+    line-height: 35px;
     color: #999;
+    font-size: 14px;
 }
 </style>

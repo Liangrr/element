@@ -1,10 +1,10 @@
 import axios from 'axios';
+import API from '@/api/index.js';
 
 
 export function getSiftFactorsData(categoriesID){
-    const SIFT_FACTORS_API = '/restapi/shopping/v2/foods_page/sift_factors';
     return new Promise((resolve,reject) => {
-        axios.get(SIFT_FACTORS_API,{
+        axios.get(API.SIFT_FACTORS_API,{
             params : {
                 entry_id : categoriesID,
                 longitude : 114.085947,
@@ -13,8 +13,13 @@ export function getSiftFactorsData(categoriesID){
             }
         })
         .then(response=>{
-            resolve(response);
-            // console.log(categoriesID)
+        	let data = response.data.map(item => {
+                return {
+	                	name: item.name,
+	                	id: item.id
+	                }
+	           })
+            resolve(data);
         })
         .catch(error => {
             console.log('失败')

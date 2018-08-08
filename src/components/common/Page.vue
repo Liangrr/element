@@ -15,7 +15,7 @@ export default {
     methods: {
         refreshDOM(){
             this.scroll.refresh();
-        }
+        },
     },
     mounted(){
         //创建滚动视图，让页面可以滚动

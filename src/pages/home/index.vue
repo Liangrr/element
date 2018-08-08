@@ -13,8 +13,9 @@
             <Goodlist :listData="goodLists"/>
         
     </page>
-    <div class="back-top" v-show="isLoad" @click="backTopAction()">↑</div>
+    <div class="back-top" @click="backTopAction()">↑</div>
 </div>
+
 </template>
 
 <script>
@@ -33,13 +34,14 @@ export default {
 	components:{
 		Location,
 		Goodlist,
-		Hot,
 		AppNav,
+		Hot,
 		Head,
 		Banner,
 	},
     data(){
         return {
+           navData:['综合排序','距离最近','品质联盟','筛选'],
            bannerData: [],
            hotData:{},
            goodLists: [],
@@ -47,7 +49,7 @@ export default {
            page:1,
            counts:0,
            bool:false,
-           isLoad:false,
+           isShow:false,
         }
     },
     methods:{
@@ -62,16 +64,28 @@ export default {
                 })
             })
         },
-         homePageScroll(y){
-            if(y<50 && (!this.bool)){
+        homePageScroll(y){
+            if(y.disY<50 && (!this.bool)){
                 this.bool=true;
                 this.requestGoodList(this.count)
+
                 this.isLoad = true
-            }   
+            } 
+            if (y.scrollY<=-350) {
+            	this.isShow = true;
+            	
+            }else if(y.scrollY>-350){
+            	this.isShow = false;
+            }  
         },
         backTopAction(){
            console.log(this.$refs.page.scrollTop)
-        }
+            
+        },
+        navAction(index){
+        	
+        },
+        
     },
     mounted(){
         getHomeBannerData().then(({data1,data2})=>{
@@ -87,6 +101,23 @@ export default {
 </script>
 
 <style scoped>
+.nav{
+	width: 100%;
+	height: 30px;
+	line-height: 30px;
+	border-top: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	background-color: white;
+	position: relative;
+	z-index: 10;
+	display: flex;
+}
+.nav li{
+	flex: 1;
+	text-align: center;
+	font-size: 12px;
+}
+
 .home-box{
     width:100%;
     height:40px;

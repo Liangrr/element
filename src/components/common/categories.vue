@@ -1,9 +1,8 @@
 <template>
 
     <div>
-    	<div class="title">
-			<i class="iconfont icon-zuo" @click='backAction()'></i><h4>{{$store.state.shopTitle}}</h4>
-		</div>
+    	<nav-title></nav-title>
+    	
         <div class="categories">
             <div class="categoriesList" v-for="item in data" :key="item.id">{{item.name}}</div>
         </div>
@@ -14,9 +13,14 @@
 </template>
 
 <script>
+import NavTitle from '@/components/common/navTitle/index.vue';
+
 export default {
     props:{
         data : Array
+    },
+    components:{
+    	NavTitle
     },
     methods:{
     	backAction(){
@@ -44,6 +48,7 @@ export default {
 	margin-right: 5px;
 }
 .categories{
+	float: left;
 	width: 90%;
 	margin-top: -1px;
     overflow-x: auto;

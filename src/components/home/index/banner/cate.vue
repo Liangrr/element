@@ -21,7 +21,6 @@ export default {
   mounted() {
         getSiftFactorsData(this.categoriesID).then(response => {
             this.categoriesData = response;
-            
         });
     }
 }

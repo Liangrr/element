@@ -1,9 +1,7 @@
 <template>
 <div class="page" ref="page">
-    <div class="page-wrap">
-
+    <div class="page-wrap" >
         <slot/>
-
     </div>
 </div>
 </template>
@@ -22,20 +20,17 @@ export default {
         //创建滚动视图，让页面可以滚动
         let scroll = new IScroll(this.$refs.page, {
             //判断外部是否需要监听正在滚动的位置
-            probeType: this.onScroll?3:0
+            probeType: 3,
+            scrollbars:true
         });
         this.scroll = scroll;
-
         scroll.on('beforeScrollStart', ()=>{
             scroll.refresh();
         })
-        
         scroll.on('scroll', ()=>{
-            let disY = scroll.y-scroll.maxScrollY;
-            this.onScroll(disY);
+            let disY = scroll.y-scroll.maxScrollY;      
+            this.$emit('onScroll',disY)
         })
-
-        
     }
 
 }
@@ -47,7 +42,11 @@ export default {
   position: absolute;
   top:0;
   left: 0;
-  bottom: 0;
+  bottom: 49px;
   overflow: hidden;
 }
+.page-wrap{
+
+}
+
 </style>

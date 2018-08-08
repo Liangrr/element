@@ -1,4 +1,5 @@
 <template>
+
     <div>
     	<div class="title">
 			<i class="iconfont icon-zuo" @click='backAction()'></i><h4>{{$store.state.shopTitle}}</h4>
@@ -6,8 +7,8 @@
         <div class="categories">
             <div class="categoriesList" v-for="item in data" :key="item.id">{{item.name}}</div>
         </div>
-        <div>
-            
+        <div class="categoriesPull" @click="dropDown()">
+            <button class="drop"><span class="iconfont icon-plus-select-down"></span></button>
         </div>
     </div>
 </template>
@@ -22,9 +23,6 @@ export default {
     		this.$router.back();
     	}
     },
-    mounted(){
-
-    }
 }
 </script>
 
@@ -46,9 +44,8 @@ export default {
 	margin-right: 5px;
 }
 .categories{
-	float: left;
+	width: 90%;
 	margin-top: -1px;
-    width: 90%;
     overflow-x: auto;
     white-space: nowrap;
 }
@@ -59,5 +56,17 @@ export default {
     padding: 8px 10px;
     display: inline-block;
     font-size: 14px;
+}
+.categoriesPull{
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.categoriesPull > button{
+    padding: 8px 10px;
+    border: 0;
+    background: #0af;
+    color: #fff;
+    outline: none;
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
 
-<page id="home">
+<page id="home" ref="page" @onScroll="homePageScroll">
         <Head></Head>
 		<Banner :data="bannerData"/> 
         <Hot :datas="hotData" />
@@ -35,6 +35,31 @@ export default {
            bannerData: [],
            hotData:{},
            goodLists: [],
+           count:8,
+           page:1,
+           counts:0,
+           bool:false,
+        }
+    },
+    methods:{
+        requestGoodList(){
+            getHomeGoodListData(this.counts).then(result=>{
+                this.goodLists = [...this.goodLists,...result]
+                this.$nextTick(()=>{
+                    this.$refs.page.refreshDOM()
+                     this.page++,
+                     this.counts=this.page*this.count
+                     this.bool = false;
+                })
+            })
+        },
+         homePageScroll(y){
+            if(y<50 && (!this.bool)){
+                console.log(1)
+                this.bool=true;
+                this.requestGoodList(this.count)
+                console.log(y)
+            }   
         }
     },
     mounted(){

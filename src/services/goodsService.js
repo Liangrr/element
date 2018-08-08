@@ -119,16 +119,18 @@ export function getHomeHotData(){
     }
 
 //商店列表数据
-export function getHomeGoodListData(){
+export function getHomeGoodListData(count){
+    console.log(count)
     return new Promise((resolve, reject)=>{
-        axios.get('restapi/shopping/v3/restaurants?latitude=22.648565&longitude=113.830707&offset=0&limit=8&extras[]=activities&extras[]=tags&extra_filters=home&rank_id=&terminal=h5')
+        axios.get('restapi/shopping/v3/restaurants?latitude=22.648565&longitude=113.830707&offset='+count+'&limit=8&extras[]=activities&extras[]=tags&extra_filters=home&rank_id=&terminal=h5')
         .then(response=>{
             let goodsList = response.data.items.map(item=>{
                     return {
                         name: item.restaurant.name,
+
                         
                     }
-              })
+            })
             resolve(goodsList)
             })
         })
@@ -136,3 +138,9 @@ export function getHomeGoodListData(){
             console.log('失败')
             })
     }
+
+//    'offset=0&limit=8&extras[]=activities&extras[]=tags&extra_filters=home&rank_id=&terminal=h5'
+
+//    'offset=8&limit=8&extras[]=activities&extras[]=tags&extra_filters=home&rank_id=b0385d4975cf4e5faa441469cfc1cc38&terminal=h5'
+
+//    'offset=16&limit=8&extras[]=activities&extras[]=tags&extra_filters=home&rank_id=b0385d4975cf4e5faa441469cfc1cc38&terminal=h5'

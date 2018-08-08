@@ -124,6 +124,7 @@ export function getHomeGoodListData(count){
                         
                     }
                })
+
             console.log(goodsList)
             resolve(goodsList)
             })

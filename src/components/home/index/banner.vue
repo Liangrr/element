@@ -31,8 +31,9 @@ export default {
 	methods : {
 		//跳转美食界面
 		goCate(itemId){
-			 this.$router.push(
-                {path: '/Cate',query : { itemId } }
+			this.$store.state.Cate = itemId;
+			this.$router.push(
+                {path: '/Cate'}
             )
 		}
 	},

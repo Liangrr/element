@@ -31,6 +31,7 @@
 		},
 		mounted(){
 			getCityData().then(result=>{
+				// this.$store.commit('changeCity',result.name)
 				this.$store.state.city = result.name
 			})
 		}

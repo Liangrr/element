@@ -27,7 +27,7 @@
 <script>
 export default {
     data(){
-        console.log(this.listData)
+        // console.log(this.listData)
         return {
 
         }

@@ -46,7 +46,6 @@ export default {
         })
         getHomeGoodListData().then(result=>{
             this.goodLists.push(result)
-            console.log(result)
         })
     }
 }

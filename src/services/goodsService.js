@@ -69,11 +69,18 @@ export function getHomeBannerData(){
             let data1 = []
             let data2 = []
             data = response.data[0].entries.map(item=>{
+//          	采用字符串拼接,把条件都拼接好
+            	let str = item.image_hash;
+            	str = 'https://fuss10.elemecdn.com/'
+            	+str[0]+'/'+str.substring(1,3)+'/'+str.substring(3,str.length)
+            	+'.jpeg?imageMogr/format/webp/thumbnail/!90x90r/gravity/Center/crop/90x90/';
                 return {
 					name : item.name,
-					id : item.id
+					id : item.id,
+					imageUrl:str,
 				}
             })
+            
                 for(let i = 0 ; i < data.length; i++){
                     if(i <= 9 ){
                         data1.push(data[i])
@@ -121,8 +128,7 @@ export function getHomeGoodListData(){
                         name: item.restaurant.name,
                         
                     }
-               })
-            console.log(response)
+              })
             resolve(goodsList)
             })
         })

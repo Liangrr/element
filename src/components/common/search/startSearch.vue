@@ -93,7 +93,6 @@ export default {
 .history{
     box-sizing: border-box;
     padding: 10px 16px;
-    /* width: 100%; */
     height: 50px;
 }
 .history_left{

@@ -2,7 +2,7 @@
 <div class="swiper-container">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
-			<li v-for="item in data[0]" :key="item.id" @click="goCate(item.id)">
+			<li v-for="item in data[0]" :key="item.id" @click="goCate(item)">
 				<img :src="item.imageUrl"/>
 				{{item.name}}
 			</li>
@@ -30,13 +30,14 @@ export default {
 	},
 	methods : {
 		//跳转商品品种界面
-		goCate(cateId){
+		goCate(item){
 //			把商品品种存起来
 			this.$store.commit('changeCate',{
-				cateId
+				cateId:item.id
 			})
-			sessionStorage.setItem('itemId',cateId)
+			sessionStorage.setItem('itemId',item.id)
 
+			this.$store.commit('changeTitle',{title:item.name})
 			this.$router.push(
                 {path: '/Cate'}
             )

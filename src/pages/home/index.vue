@@ -1,22 +1,21 @@
 <template>
-
-<page id="home" ref="page" @onScroll="homePageScroll">
-        <Head></Head>
-		<Banner :data="bannerData"/> 
-        <Hot :datas="hotData" />
+<div>
+    <page id="home" ref="page" @onScroll="homePageScroll">
+            <Head></Head>
+            <Banner :data="bannerData"/> 
+            <Hot :datas="hotData" />
+            <div class="home-box">
+                <span class="box left"></span>
+                <p class="box right">推荐商家</p>
+                <span></span>
+            </div>
+            <app-nav></app-nav>
+            <Goodlist :listData="goodLists"/>
         
-        <div class="home-box">
-            <span class="box left"></span>
-            <p class="box right">推荐商家</p>
-            <span></span>
-        </div>
-        <ul class="nav">
-			<li v-for="(item,index) in navData" :key="index" @click="navAction(index)">{{item}}</li>
-		</ul>
-		<!--<app-nav v-show='isShow' class="appnav"></app-nav>-->
-		
-        <Goodlist :listData="goodLists"/>
-</page>
+    </page>
+    <div class="back-top" @click="backTopAction()">↑</div>
+</div>
+
 </template>
 
 <script>
@@ -69,17 +68,24 @@ export default {
             if(y.disY<50 && (!this.bool)){
                 this.bool=true;
                 this.requestGoodList(this.count)
-            }
+
+                this.isLoad = true
+            } 
             if (y.scrollY<=-350) {
             	this.isShow = true;
             	
             }else if(y.scrollY>-350){
             	this.isShow = false;
-            }
+            }  
+        },
+        backTopAction(){
+           console.log(this.$refs.page.scrollTop)
+            
         },
         navAction(index){
         	
-        }
+        },
+        
     },
     mounted(){
         getHomeBannerData().then(({data1,data2})=>{
@@ -132,5 +138,18 @@ span{
     height:1px;
     background: #bfbfbf;
     width:16px;
+}
+.back-top{
+    width:36px;
+    height:36px;
+    background: #fff;
+    position:absolute;
+    bottom:70px;
+    right:13px;
+    border-radius:50%;
+    border:1px solid #e6e6e6;
+    line-height:36px;
+    text-align:center;
+    color:#999;
 }
 </style>

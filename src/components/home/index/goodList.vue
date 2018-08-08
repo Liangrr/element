@@ -42,13 +42,10 @@ export default {
     width:100%;
     height:120px;
     background:#fff;
-    margin-top:10px;
     position:relative;
     padding-left:75px;
     padding-top:10px;
-    border:1px solid #eee;
-    border-left:0;
-    border-right:0;
+    border-top:1px solid #eee;
 }
 .box-left{
     width:58px;

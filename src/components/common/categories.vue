@@ -65,12 +65,13 @@ export default {
   float: left;
   margin-right: 5px;
 }
-.categories {
-  width: 100%;
-  float: left;
-  margin-top: -1px;
-  overflow-x: auto;
-  white-space: nowrap;
+
+.categories{
+	float: left;
+	width: 90%;
+	margin-top: -2px;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 .categoriesList {
   text-align: center;
@@ -80,10 +81,11 @@ export default {
   display: inline-block;
   font-size: 14px;
 }
-.categoriesPull {
-  position: absolute;
-  top: 49px;
-  right: 0;
+
+.categoriesPull{
+    position: absolute;
+    top: 50px;
+    right: 0;
 }
 .categoriesPull > button {
   padding: 7px 10px 8px 10px;

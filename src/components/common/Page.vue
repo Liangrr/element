@@ -15,7 +15,7 @@ export default {
     methods: {
         refreshDOM(){
             this.scroll.refresh();
-        }
+        },
     },
     mounted(){
         //创建滚动视图，让页面可以滚动
@@ -30,10 +30,8 @@ export default {
             scroll.refresh();
         })
         scroll.on('scroll', ()=>{
-//      	console.log(scroll.y)
-            let disY = scroll.y-scroll.maxScrollY; 
-            let scrollY = scroll.y;
-            this.$emit('onScroll',{disY,scrollY})
+            let disY = scroll.y-scroll.maxScrollY;      
+            this.$emit('onScroll',disY)
         })
     }
 }

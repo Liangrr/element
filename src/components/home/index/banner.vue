@@ -17,7 +17,7 @@
     <div class="swiper-pagination"></div>
 </div>
 </template>
-
+ 
 <script>
 export default {
     props:{

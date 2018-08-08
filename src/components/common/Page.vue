@@ -2,6 +2,7 @@
 <div class="page" ref="page">
     <div class="page-wrap" >
         <slot/>
+        
     </div>
 </div>
 </template>
@@ -32,7 +33,6 @@ export default {
             this.$emit('onScroll',disY)
         })
     }
-
 }
 </script>
 

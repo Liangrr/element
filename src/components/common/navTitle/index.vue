@@ -1,12 +1,19 @@
 <template>
 <div>
 	<div class="title">
-		<i class="iconfont icon-zuo" @click='backAction()'></i><h4>{{$store.state.shopTitle}}</h4>
+		<i class="iconfont icon-zuo" @click='backAction()'></i><h4>{{$store.state.title}}</h4>
 	</div>
 </div>
 </template>
 
 <script>
+export default{
+	methods:{
+		backAction(){
+			this.$router.back();
+		}
+	},
+}
 </script>
 
 <style scoped>

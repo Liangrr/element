@@ -50,7 +50,7 @@ export default {
 .categories{
 	float: left;
 	width: 90%;
-	margin-top: -1px;
+	margin-top: -2px;
     overflow-x: auto;
     white-space: nowrap;
 }
@@ -64,7 +64,7 @@ export default {
 }
 .categoriesPull{
     position: absolute;
-    top: 0;
+    top: 50px;
     right: 0;
 }
 .categoriesPull > button{

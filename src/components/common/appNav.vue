@@ -3,16 +3,14 @@
 	<div id="appNav">
 
 		<ul class="nav">
-			<li @click="navAction('sorting')">{{sort}}</li>
-			<li v-for="(item,index) in outsideSort" :key="index">{{item.name}}</li>
-			<li @click="navAction('selecting')">筛选</li>
+			<li v-for="(item,index) in navData" :key="index" @click="navAction(index)">{{item}}</li>
 		</ul>
 		<!--显示综合排序详情-->
-		<ul class="sort" :class='{}' v-if="isShow=='sorting'">
+		<ul class="sort" v-show="selectIndex==0">
 			<li v-for="(item,index) in insiteSort" :key="index">{{item.name}}</li>
 		</ul>
 		<!--显示筛选详情-->
-		<div class="select" v-if="isShow=='selecting'">
+		<div class="select" v-show="selectIndex==3">
 			<p>商家服务(可多选)</p>
 			<ul class="service">
 				<li v-for="(item,index) in serviceData" :key="index">{{item.name}}</li>
@@ -40,7 +38,8 @@ export default{
 			sort:'',
 			insiteSort:'',
 			outsideSort:'',
-			isShow:'',
+			navData:['综合排序','距离最近','品质联盟','筛选'],
+			selectIndex:-1,
 //			筛选请求的数据
 			discountData:'',
 			consumeData:'',
@@ -48,9 +47,14 @@ export default{
 		}
 	},
 	methods:{
-		navAction(val){
-			this.isShow = val;
-		}
+		navAction(index){
+			if(this.selectIndex == index){
+				this.selectIndex = -1;
+			}else{
+				this.selectIndex = index;	
+			}
+		},
+		
 	},
 	mounted(){
 		getAppNavData().then(result=>{

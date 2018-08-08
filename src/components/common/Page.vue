@@ -29,8 +29,10 @@ export default {
             scroll.refresh();
         })
         scroll.on('scroll', ()=>{
-            let disY = scroll.y-scroll.maxScrollY;      
-            this.$emit('onScroll',disY)
+//      	console.log(scroll.y)
+            let disY = scroll.y-scroll.maxScrollY; 
+            let scrollY = scroll.y;
+            this.$emit('onScroll',{disY,scrollY})
         })
     }
 }

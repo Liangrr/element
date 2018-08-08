@@ -117,31 +117,16 @@ export function getHomeGoodListData(count){
         axios.get('restapi/shopping/v3/restaurants?latitude=22.648565&longitude=113.830707&offset='+count+'&limit=8&extras[]=activities&extras[]=tags&extra_filters=home&rank_id=&terminal=h5')
         .then(response=>{
             let goodsList = response.data.items.map(item=>{
-<<<<<<< HEAD
                     return {
                         name: item.restaurant.name,
-
-                        
                     }
                })
-=======
-                return {
-                    name: item.restaurant.name,
-                }
-            })
->>>>>>> 894426579d24d6f6efc93b2e0855ba260e27d4f3
+
             resolve(goodsList)
         })
-<<<<<<< HEAD
         .catch(error=>{
             console.log('失败')
             })
-    }
-
-=======
-    })
-    .catch(error=>{
-        console.log('失败')
     })
 }
->>>>>>> 894426579d24d6f6efc93b2e0855ba260e27d4f3
+

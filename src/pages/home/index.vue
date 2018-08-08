@@ -1,17 +1,20 @@
 <template>
-
-<page id="home" ref="page" @onScroll="homePageScroll">
-        <Head></Head>
-		<Banner :data="bannerData"/> 
-        <Hot :datas="hotData" />
-        <div class="home-box">
-            <span class="box left"></span>
-            <p class="box right">推荐商家</p>
-            <span></span>
-        </div>
-        <app-nav></app-nav>
-        <Goodlist :listData="goodLists"/>
-</page>
+<div>
+    <page id="home" ref="page" @onScroll="homePageScroll">
+            <Head></Head>
+            <Banner :data="bannerData"/> 
+            <Hot :datas="hotData" />
+            <div class="home-box">
+                <span class="box left"></span>
+                <p class="box right">推荐商家</p>
+                <span></span>
+            </div>
+            <app-nav></app-nav>
+            <Goodlist :listData="goodLists"/>
+        
+    </page>
+    <div class="back-top" v-show="isLoad" @click="backTopAction()">↑</div>
+</div>
 </template>
 
 <script>
@@ -44,6 +47,7 @@ export default {
            page:1,
            counts:0,
            bool:false,
+           isLoad:false,
         }
     },
     methods:{
@@ -62,7 +66,11 @@ export default {
             if(y<50 && (!this.bool)){
                 this.bool=true;
                 this.requestGoodList(this.count)
+                this.isLoad = true
             }   
+        },
+        backTopAction(){
+           console.log(this.$refs.page.scrollTop)
         }
     },
     mounted(){
@@ -99,5 +107,18 @@ span{
     height:1px;
     background: #bfbfbf;
     width:16px;
+}
+.back-top{
+    width:36px;
+    height:36px;
+    background: #fff;
+    position:absolute;
+    bottom:70px;
+    right:13px;
+    border-radius:50%;
+    border:1px solid #e6e6e6;
+    line-height:36px;
+    text-align:center;
+    color:#999;
 }
 </style>

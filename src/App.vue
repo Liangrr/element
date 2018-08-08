@@ -44,4 +44,10 @@ html, body, #app{
   flex: 1;
   text-align: center;
 }
+.iScrollVerticalScrollbar{
+    width:4px !important;
+}
+.iScrollIndicator{
+    background: rgba(0, 0, 0, 0.3) !important;
+}
 </style>

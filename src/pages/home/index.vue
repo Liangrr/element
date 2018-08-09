@@ -1,7 +1,9 @@
 <template>
 <div>
+	<search class='search' v-show='isShowSearch'></search>
+	<app-nav class='appnav' v-show='isShowAppNav'></app-nav>
     <page id="home" ref="page" @onScroll="homePageScroll">
-            <Head></Head>
+    		<Head></Head>
             <Banner :data="bannerData"/> 
             <Hot :datas="hotData" />
             <div class="home-box">
@@ -9,7 +11,9 @@
                 <p class="box right">推荐商家</p>
                 <span></span>
             </div>
-            <app-nav></app-nav>
+			<ul class="nav">
+				<li v-for="(item,index) in navData" :key="index" @click="navAction(index)">{{item}}</li>
+			</ul>
             <Goodlist :listData="goodLists"/>
         
     </page>
@@ -24,6 +28,7 @@ import Location from '@/components/home/index/banner.vue';
 import Goodlist from '@/components/home/index/goodlist.vue';
 import Hot from '@/components/home/index/hot.vue';
 
+import Search from "@/components/common/search.vue";
 import AppNav from '@/components/common/appNav.vue';
 import Head from '@/components/common/header.vue';
 
@@ -38,6 +43,7 @@ export default {
 		Hot,
 		Head,
 		Banner,
+		Search,
 	},
     data(){
         return {
@@ -51,6 +57,8 @@ export default {
            bool:false,
            isShow:false,
            isLoad:false,
+           isShowSearch:false,
+           isShowAppNav:false,
         }
     },
     methods:{
@@ -66,16 +74,31 @@ export default {
             })
         },
         homePageScroll(y){
-            if(y<50 && (!this.bool)){
+//      	这个是滚动到disY(滚动scroll.y与scroll.maxScrollY的差)的时候请求数据
+            if(y.disY<50 && (!this.bool)){
                 this.bool=true;
-                this.requestGoodList(this.count)
+                this.requestGoodList(this.count);
                 this.isLoad = true
+            }
+//          这个是当搜索框滚动y值小于50时显示固定在顶部
+            if(y.scrollY<-40){
+            	this.isShowSearch = true
+            }else{
+            	this.isShowSearch = false;
+            }
+//          这个是当appnav滚动y值小于50时显示固定在顶部
+            if(y.scrollY<-329){
+            	this.isShowAppNav = true
+            }else{
+            	this.isShowAppNav = false;
             }
         },
         backTopAction(){
-            this.$refs.page.scrollTop()
-            this.isLoad = false;
+            
         },
+        navAction(index){
+			this.$refs.page.toAppNav();
+		},
     },
     mounted(){
         getHomeBannerData().then(({data1,data2})=>{
@@ -91,6 +114,20 @@ export default {
 </script>
 
 <style scoped>
+.search{
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 99;	
+}
+.appnav{
+	width: 100%;
+	position: absolute;
+	top: 44px;
+	left: 0;
+	z-index: 99;
+}
 .nav{
 	width: 100%;
 	height: 30px;

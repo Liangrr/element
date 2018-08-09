@@ -3,6 +3,7 @@ import API from '@/api/index.js';
 
 
 export function getSiftFactorsData(categoriesID){
+
     return new Promise((resolve,reject) => {
         axios.get(API.SIFT_FACTORS_API,{
             params : {

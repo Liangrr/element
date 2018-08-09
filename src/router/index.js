@@ -17,6 +17,8 @@ import Collect from '@/components/location/collect.vue'
 
 import Detail from '@/components/home/business/detail.vue'
 
+import SetMeal from '@/components/home/index/hot/SetMeal.vue'
+
 
 // 配置
 const routes = [
@@ -65,6 +67,11 @@ const routes = [
     path:'/detail',
   	name:'detail',
   	component:Detail
+  },
+    {
+  	path:'/setMeal',
+  	name:'setMeal',
+  	component:SetMeal
   },
   {
     // path: '/',

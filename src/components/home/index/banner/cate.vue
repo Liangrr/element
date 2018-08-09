@@ -1,6 +1,8 @@
 <template>
     <div id="cate">
-        <Categories :data="categoriesData"></Categories>
+        <keep-alive>
+            <Categories :data="categoriesData"></Categories>
+        </keep-alive>
     </div>
 </template>
 
@@ -14,7 +16,7 @@ export default {
   },
   data() {
     return {
-      categoriesID : this.$store.state.cateId || 20004689 ,
+      categoriesID : sessionStorage.getItem('itemId'),
       categoriesData: []
     };
   },

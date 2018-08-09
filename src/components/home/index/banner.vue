@@ -35,6 +35,8 @@ export default {
 			this.$store.commit('changeCate',{
 				cateId:item.id
 			})
+			sessionStorage.setItem('itemId',item.id)
+
 			this.$store.commit('changeTitle',{title:item.name})
 			this.$router.push(
                 {path: '/Cate'}

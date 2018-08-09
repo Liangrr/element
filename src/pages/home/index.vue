@@ -13,7 +13,7 @@
             <Goodlist :listData="goodLists"/>
         
     </page>
-    <div class="back-top" @click="backTopAction()">↑</div>
+    <div class="back-top" @click="backTopAction()" v-show="isLoad">↑</div>
 </div>
 
 </template>
@@ -50,6 +50,7 @@ export default {
            counts:0,
            bool:false,
            isShow:false,
+           isLoad:false,
         }
     },
     methods:{
@@ -65,27 +66,16 @@ export default {
             })
         },
         homePageScroll(y){
-            if(y.disY<50 && (!this.bool)){
+            if(y<50 && (!this.bool)){
                 this.bool=true;
                 this.requestGoodList(this.count)
-
                 this.isLoad = true
-            } 
-            if (y.scrollY<=-350) {
-            	this.isShow = true;
-            	
-            }else if(y.scrollY>-350){
-            	this.isShow = false;
-            }  
+            }
         },
         backTopAction(){
-           console.log(this.$refs.page.scrollTop)
-            
+            this.$refs.page.scrollTop()
+            this.isLoad = false;
         },
-        navAction(index){
-        	
-        },
-        
     },
     mounted(){
         getHomeBannerData().then(({data1,data2})=>{

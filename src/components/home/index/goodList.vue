@@ -1,6 +1,6 @@
 <template>
     <nav id="goodlist">
-        <li class="list" v-for="(item,index) in listData" :key="index" ref='list'>
+        <li class="list" v-for="(item,index) in listData" :key="index" ref='list' @click="locataionAction()">
             <div class="box-left">
                 <img :src="item.img" alt="">            
             </div>
@@ -34,6 +34,11 @@ export default {
     props:{
         listData:Array,
     },
+    methods:{
+        locataionAction(){
+            this.$router.push('/detail')
+        }
+    }
 }
 </script>
 

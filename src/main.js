@@ -6,6 +6,8 @@ import store from './store/index.js'
 
 Vue.config.productionTip = false
 
+Vue.prototype.$center = new Vue()
+
 //声明page为全局组件
 import Page from '@/components/common/Page.vue'
 Vue.component('Page',Page)

@@ -1,6 +1,6 @@
 <template>
     <div class="mealNav">
-        <div class="mealNavList" v-for="(item,index) in MealNavData" :key="index">
+        <div class="mealNavList aa" v-for="(item,index) in MealNavData" :key="index">
             {{item.name}}
         </div>
     </div>
@@ -32,6 +32,7 @@ export default {
     display: inline-block;
     text-align: center;
     padding: 8px 10px;
-    border-bottom: 1px solid #666;
+    align-self: auto;
+    color: #333;
 }
 </style>

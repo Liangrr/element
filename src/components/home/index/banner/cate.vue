@@ -16,8 +16,6 @@ export default {
   },
   data() {
     return {
-
-    //   categoriesID : this.$store.state.Cate,
       categoriesID : sessionStorage.getItem('itemId'),
       categoriesData: []
     };

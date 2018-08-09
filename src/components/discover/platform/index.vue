@@ -53,6 +53,7 @@ export default {
 <style scoped>
 .platform{
 	width: 100%;
+	border-bottom: 10px solid #f4f4f4;
 }
 .platform>img{
 	width: 100%;	
@@ -63,7 +64,7 @@ export default {
 }
 .parts>div{
 	flex: 1;
-	height: 42.7vw;
+	height: 40vw;
 }
 .parts_l{
 	width: 100%;

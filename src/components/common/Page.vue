@@ -16,6 +16,9 @@ export default {
         refreshDOM(){
             this.scroll.refresh();
         },
+        toAppNav(){
+        	this.scroll.scrollTo(0,-330,100)
+        }
     },
     mounted(){
         //创建滚动视图，让页面可以滚动
@@ -30,9 +33,13 @@ export default {
             scroll.refresh();
         })
         scroll.on('scroll', ()=>{
-            let disY = scroll.y-scroll.maxScrollY;      
-            this.$emit('onScroll',disY)
+            let disY = scroll.y-scroll.maxScrollY;
+//          每时每刻的y值
+            let scrollY = scroll.y;
+//          这里滚动事件传一个对象
+            this.$emit('onScroll',{disY,scrollY})
         })
+       
     }
 }
 </script>

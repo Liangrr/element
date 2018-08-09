@@ -53,14 +53,32 @@ const SIFT_FACTORS_API = '/restapi/shopping/v2/foods_page/sift_factors';
 接口功能：品质套餐导航接口
 接口参数：
 */
-const MEAL_NAV_API = '/restapi/shopping/v1/sale_list_index'
-export default {
-	APPNAV_API,
-        SCREEN_API,
-        HOT_SEARCH_WORDS_API,
-        CITY_API,
-        SELECTION_API,
-        SIFT_FACTORS_API,
-        MEAL_NAV_API
+const MEAL_NAV_API = '/restapi/shopping/v1/sale_list_index';
 
+
+/*
+发现界面的接口
+接口功能：平台接口
+接口参数：
+*/
+const PLATFORM_API = '/restapi/member/v1/discover?platform=2&block_index=0';
+/*
+发现界面的接口
+接口功能：限时好礼接口
+接口参数：
+*/
+const ACTIVITY_API = '/restapi/member/gifts/suggest';
+
+export default {
+//	首页
+	APPNAV_API,
+    SCREEN_API,
+    HOT_SEARCH_WORDS_API,
+    CITY_API,
+    SELECTION_API,
+    SIFT_FACTORS_API,
+    MEAL_NAV_API,
+//  发现界面接口
+	PLATFORM_API,
+	ACTIVITY_API,
 }

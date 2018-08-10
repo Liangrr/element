@@ -198,6 +198,7 @@
 </template>
 
 <script>
+import {getGoodListDetailData} from '../../../services/goodsService.js'
 export default {
     data(){
         return{
@@ -222,6 +223,11 @@ export default {
 
         })
     },
+    mounted(){
+        getGoodListDetailData().then((result)=>{
+            console.log(result)
+        })
+    }
     
 }
 </script>

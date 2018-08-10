@@ -163,11 +163,9 @@ export function getHomeGoodListData(count){
                     arr2,
                     distance:item.restaurant.distance,//距离
                     order_lead_time:item.restaurant.order_lead_time,//配送时间
-                    // support_tags:item.restaurant.support_tags
                 }
             })
             resolve(goodsList)
-            console.log(goodsList)
         })
         .catch(error=>{
             console.log('失败')
@@ -206,10 +204,36 @@ export function getGoodListDetailData(){
     return new Promise((resolve, reject)=>{
         axios.get('shopping/v2/menu?restaurant_id=1334126')
         .then(response=>{
-                console.log(response)
+            console.log(response)
+         let data = []
+           response.data.map(item=>{
+             let data1 = item.foods.map(val=>{
+                let str = val.image_path;
+                let ends = '';
+                if(str.endsWith('png'))
+                    ends = '.png'
+                if(str.endsWith('jpeg'))
+                    ends = '.jpeg'
+            	str = 'https://fuss10.elemecdn.com/'
+            	+str[0]+'/'+str.substring(1,3)+'/'+str.substring(3,str.length)
+                +ends+'?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/';
+                return {
+                    category_id:val.category_id, //id
+                    description:val.description, //描述
+                    image_path:str, //img图片
+                    rating_count:val.rating_count, //rating_count评级数  
+                    satisfy_count:val.satisfy_count, //satisfy_count满足数
+                    satisfy_rate:val.satisfy_rate, //satisfy_rate好评率
+                    specifications:val.specifications, //月售
+                    name: val.name
+                 }
+             })
+             data.push(...data1)
+          })
+          resolve(data)
         })
-        .catch(error=>{
-            console.log('失败')
+    .catch(error=>{
+        console.log('失败')
         })
     })
 }

@@ -91,37 +91,43 @@
                         </li>
                 </ul>
                 <div class="big-box">
-                        <nav class="sidebar">
-                            <li class="center">热销</li>
-                            <li class="center">优惠</li>
-                            <li>主食</li>
-                            <li>饮料</li>
-                            <li>套餐</li>
-                            <li>配餐</li>
-                            <li>大牌半价套餐</li>
-                            <li>买一送一（5折特惠）</li>
-                            <li>美食天天5折享</li>
-                            <li>饿了么专享套餐</li>
-                            <li>6月份折扣</li>
-                            <li>新品尝鲜</li>
-                        </nav>
-                        <div class="shop-goods">
+                    <!-- <div class="box-nav">
+                        <div class="scroll-nav"> -->
+                            <nav class="sidebar">
+                                <li class="center">热销</li>
+                                <li class="center">优惠</li>
+                                <li>主食</li>
+                                <li>饮料</li>
+                                <li>套餐</li>
+                                <li>配餐</li>
+                                <li>大牌半价套餐</li>
+                                <li>买一送一（5折特惠）</li>
+                                <li>美食天天5折享</li>
+                                <li>饿了么专享套餐</li>
+                                <li>6月份折扣</li>
+                                <li>新品尝鲜</li>
+                            </nav>
+                        <!-- </div>
+                    </div> -->
+                    <div class="shop-goods">
+                        <div class="shop-box">
                             <p class="hot-title">
                                 <span>热销</span>
                                 大家喜欢吃,才是真好吃。
                             </p>
-                            <div class="main">
-                                <img src="//fuss10.elemecdn.com/f/e3/fc31cb39d91dce4c896a885251c73jpeg.jpeg?imageMogr/format/webp/thumbnail/!140x140r/gravity/Center/crop/140x140/" alt="">
+                            <div class="main" v-for="item in listData" :key="item.id">
+                                <img :src="item.image_path" alt="">
                                 <div class="main-right">
-                                    <h5>中可乐</h5>
-                                    <p class="item-1">杯</p>
-                                    <p>月售133份<span>好评率100%</span></p>
+                                    <h5>{{item.name}}</h5>
+                                    <p class="item-1">份</p>
+                                    <p>月售{{item.rating_count}}份<span>好评率{{item.satisfy_rate + '%'}}</span></p>
                                     <p class="shop-discount"><b>1.7折</b>每单限1份优惠</p>
                                     <p><strong class="true">￥1</strong><span class="false">￥6</span></p>
                                     <div class="add shop-add">+</div>
                                 </div>
                             </div>
                         </div>
+                    </div>
                 </div>
             </div>
         </keep-alive>
@@ -206,6 +212,7 @@ export default {
             courId:0,
             openShow:false,
             distance:null,
+            listData:[],
         }
     },
     methods:{
@@ -216,16 +223,16 @@ export default {
             this.courId = index
         },
     },
-    created(){
-        this.$center.$on('distance',(result)=>{
-            // console.log(result)
-            // this.openShow = true
+    // created(){
+    //     this.$center.$on('distance',(result)=>{
+    //         // console.log(result)
+    //         // this.openShow = true
 
-        })
-    },
+    //     })
+    // },
     mounted(){
         getGoodListDetailData().then((result)=>{
-            console.log(result)
+            this.listData = result
         })
     }
     
@@ -447,12 +454,14 @@ export default {
 .shop-goods{
     width:81%;
     padding-left:10px;
+    height:800px;
+    overflow: hidden;
 }
 .main{
     position:relative;
     display: flex;
     padding-top:10px;
-    font-family: '微软雅黑'
+    font-family: '微软雅黑';
 }
 .main img{
     width:80px;
@@ -506,6 +515,10 @@ export default {
 .false{
     text-decoration: line-through;
     font-size:12px;
+}
+.main-right h5{
+    color:#3f3f3f;
+    font-weight: 700
 }
 /* 评论的详情页面   */
 .grade{
@@ -612,5 +625,9 @@ h5{
 }
 .last span{
     color:#ccc;
+}
+.shop-box{
+    overflow: auto;
+    height:1000px;
 }
 </style>

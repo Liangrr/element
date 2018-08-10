@@ -19,6 +19,8 @@ import Detail from '@/components/home/business/detail.vue'
 
 import SetMeal from '@/components/home/index/hot/SetMeal.vue'
 
+import RushToPurchase from '@/components/home/index/hot/rushToPurchase.vue'
+
 
 // 配置
 const routes = [
@@ -68,10 +70,15 @@ const routes = [
   	name:'detail',
   	component:Detail
   },
-    {
+  {
   	path:'/setMeal',
   	name:'setMeal',
   	component:SetMeal
+  },
+  {//品质套餐页面
+  	path:'/rushToPurchase',
+  	name:'rushToPurchase',
+  	component:RushToPurchase
   },
   {
     // path: '/',

@@ -32,7 +32,6 @@ export default {
     methods : {
         dropDown(){
             this.isShow = true;
-            console.log(this.isShow)
         },
         backAction(){
     		this.$router.back();
@@ -68,7 +67,7 @@ export default {
 
 .categories{
 	float: left;
-	width: 90%;
+	width: 100%;
 	margin-top: -2px;
     overflow-x: auto;
     white-space: nowrap;
@@ -84,7 +83,7 @@ export default {
 
 .categoriesPull{
     position: absolute;
-    top: 50px;
+    top: 47px;
     right: 0;
 }
 .categoriesPull > button {

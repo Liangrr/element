@@ -16,6 +16,10 @@ export default {
         refreshDOM(){
             this.scroll.refresh();
         },
+
+        scrollTop(){
+            this.scroll.scrollTo(0, 0, 200);
+        },
         toAppNav(){
         	this.scroll.scrollTo(0,-330,100)
         }
@@ -33,6 +37,8 @@ export default {
             scroll.refresh();
         })
         scroll.on('scroll', ()=>{
+            let y = scroll.y  
+            this.$center.$emit('distance',y)
             let disY = scroll.y-scroll.maxScrollY;
 //          每时每刻的y值
             let scrollY = scroll.y;

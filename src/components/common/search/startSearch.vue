@@ -40,7 +40,6 @@ export default {
     methods : {
         saveTheHistory(itemSearch_word){
             this.historical = itemSearch_word;
-            console.log(this.historical)
         },
         backAction(){
             this.$router.back()

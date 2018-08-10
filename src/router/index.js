@@ -15,6 +15,8 @@ import Cate from '@/components/home/index/banner/cate.vue'
 
 import Collect from '@/components/location/collect.vue'
 
+import Detail from '@/components/home/business/detail.vue'
+
 import SetMeal from '@/components/home/index/hot/SetMeal.vue'
 
 import RushToPurchase from '@/components/home/index/hot/rushToPurchase.vue'
@@ -63,7 +65,12 @@ const routes = [
   	name:'collect',
   	component:Collect
   },
-  {//品质套餐页面
+  {
+    path:'/detail',
+  	name:'detail',
+  	component:Detail
+  },
+  {
   	path:'/setMeal',
   	name:'setMeal',
   	component:SetMeal

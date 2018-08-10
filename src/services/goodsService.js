@@ -126,6 +126,7 @@ export function getHomeGoodListData(count){
     return new Promise((resolve, reject)=>{
         axios.get('restapi/shopping/v3/restaurants?latitude=22.648565&longitude=113.830707&offset='+count+'&limit=8&extras[]=activities&extras[]=tags&extra_filters=home&rank_id=&terminal=h5')
         .then(response=>{
+            
             let goodsList = response.data.items.map(item=>{
 //          	采用字符串拼接,把条件都拼接好
                 let str = item.restaurant.image_path;
@@ -134,16 +135,39 @@ export function getHomeGoodListData(count){
                     ends = '.png'
                 if(str.endsWith('jpeg'))
                     ends = '.jpeg'
-                
             	str = 'https://fuss10.elemecdn.com/'
             	+str[0]+'/'+str.substring(1,3)+'/'+str.substring(3,str.length)
-            	+ends+'?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/';
+                +ends+'?imageMogr/format/webp/thumbnail/!130x130r/gravity/Center/crop/130x130/';
+                let arr = item.restaurant.activities
+                let arr1 = []
+                let arr2 = []
+                for(var i = 0 ; i < arr.length ; i++){
+                    if(i < 2){
+                        arr1.push(arr[i])
+                    }
+                    if(i >= 2){
+                        arr2.push(arr[i])
+                    }
+                }
                 return {
-                    name: item.restaurant.name,
-                    img: str
+                    img: str,
+                    id:item.restaurant.id,
+                    name:item.restaurant.name,
+                    reason: item.restaurant.recommend.reason,
+                    flavors: item.restaurant.flavors[0].name,
+                    rating:item.restaurant.rating,//评分
+                    recent_order_num:item.restaurant.recent_order_num,//月售
+                    float_minimum_order_amount:item.restaurant.float_minimum_order_amount,//起送
+                    float_delivery_fee:item.restaurant.float_delivery_fee,//配送费
+                    arr1,
+                    arr2,
+                    distance:item.restaurant.distance,//距离
+                    order_lead_time:item.restaurant.order_lead_time,//配送时间
+                    // support_tags:item.restaurant.support_tags
                 }
             })
             resolve(goodsList)
+            console.log(goodsList)
         })
         .catch(error=>{
             console.log('失败')
@@ -176,3 +200,16 @@ export function getSeleCtionData(){
 }
 
 
+
+//获得商家详情数据的
+export function getGoodListDetailData(){
+    return new Promise((resolve, reject)=>{
+        axios.get('shopping/v2/menu?restaurant_id=1334126')
+        .then(response=>{
+                console.log(response)
+        })
+        .catch(error=>{
+            console.log('失败')
+        })
+    })
+}

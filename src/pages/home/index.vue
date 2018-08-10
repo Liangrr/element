@@ -17,7 +17,7 @@
             <Goodlist :listData="goodLists"/>
         
     </page>
-    <div class="back-top" @click="backTopAction()">↑</div>
+    <div class="back-top" @click="backTopAction()" v-show="isLoad">↑</div>
 </div>
 
 </template>
@@ -55,6 +55,8 @@ export default {
            page:1,
            counts:0,
            bool:false,
+           isShow:false,
+           isLoad:false,
            isShowSearch:false,
            isShowAppNav:false,
         }
@@ -92,12 +94,12 @@ export default {
             }
         },
         backTopAction(){
-            
+            this.isLoad = true
+            this.$refs.page.scrollTop()
         },
         navAction(index){
 			this.$refs.page.toAppNav();
 		},
-        
     },
     mounted(){
         getHomeBannerData().then(({data1,data2})=>{

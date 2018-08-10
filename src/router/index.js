@@ -17,6 +17,8 @@ import Collect from '@/components/location/collect.vue'
 
 import SetMeal from '@/components/home/index/hot/SetMeal.vue'
 
+import RushToPurchase from '@/components/home/index/hot/rushToPurchase.vue'
+
 
 // 配置
 const routes = [
@@ -61,10 +63,15 @@ const routes = [
   	name:'collect',
   	component:Collect
   },
-  {
+  {//品质套餐页面
   	path:'/setMeal',
   	name:'setMeal',
   	component:SetMeal
+  },
+  {//品质套餐页面
+  	path:'/rushToPurchase',
+  	name:'rushToPurchase',
+  	component:RushToPurchase
   },
   {
     // path: '/',

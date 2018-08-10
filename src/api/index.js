@@ -68,6 +68,18 @@ const PLATFORM_API = '/restapi/member/v1/discover?platform=2&block_index=0';
 接口参数：
 */
 const ACTIVITY_API = '/restapi/member/gifts/suggest';
+/*
+限时抢购接口
+接口功能：商品列表
+接口参数：
+*/
+const PURCHASE_API = '/restapi/shopping/v3/flash/foods';
+/*
+限时抢购用户量接口
+接口功能：正在抢购人数
+接口参数：
+*/
+const POPULATION_API = '/restapi/shopping/v3/flash/init';
 
 export default {
 //	首页
@@ -78,6 +90,8 @@ export default {
     SELECTION_API,
     SIFT_FACTORS_API,
     MEAL_NAV_API,
+    PURCHASE_API,
+    POPULATION_API,
 //  发现界面接口
 	PLATFORM_API,
 	ACTIVITY_API,

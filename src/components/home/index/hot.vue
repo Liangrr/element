@@ -6,7 +6,7 @@
             <p class="left-3">立即抢购></p>
             <img src="//fuss10.elemecdn.com/d/d4/16ff085900d62b8d60fa7e9c6b65dpng.png?imageMogr/format/webp/thumbnail/!240x160r/gravity/Center/crop/240x160/" alt="">
         </div>
-        <div class="hot-right">
+        <div class="hot-right" @click="goRushToPurchase()">
             <p class="left-1 right-1">{{datas.name}}</p>
             <p class="left-2">{{datas.description}}</p>
             <p class="left-3"><span>{{datas.population}}</span> 正在抢></p>
@@ -24,6 +24,11 @@ export default {
         goSetMeal(){
             this.$router.push(
                 {path : '/SetMeal'}
+            )
+        },
+        goRushToPurchase(){
+            this.$router.push(
+                {path : '/RushToPurchase'}
             )
         }
     }

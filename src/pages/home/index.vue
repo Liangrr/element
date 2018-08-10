@@ -94,7 +94,8 @@ export default {
             }
         },
         backTopAction(){
-            
+            this.isLoad = true
+            this.$refs.page.scrollTop()
         },
         navAction(index){
 			this.$refs.page.toAppNav();

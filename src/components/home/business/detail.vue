@@ -1,7 +1,33 @@
 <template>
-    <!-- <div class="detail-nav top" v-show="openShow">
-           <li v-for="(item,index) in titles" :key="index" @click="showAction(index)" :class="{'cur':courId==index}"><span>{{item}}</span></li>
-    </div> -->
+<div>
+    <div class="detail-nav top" v-show="openShow">
+           <li v-for="(item,index) in titles" :key="item.id" @click="showAction(index)" :class="{'cur':courId==index}"><span>{{item.name}}</span></li>
+    </div>
+     <div class="scroll-nav hidden" v-show="isLoads">
+        <div class="sidebar">
+            <li class="center">热销</li>
+            <li class="center">优惠</li>
+            <li>主食</li>
+            <li>饮料</li>
+            <li>套餐</li>
+            <li>配餐</li>
+            <li>大牌半价套餐</li>
+            <li>买一送一（5折特惠）</li>
+            <li>美食天天5折享</li>
+            <li>饿了么专享套餐</li>
+            <li>饮料</li>
+            <li>套餐</li>
+            <li>配餐</li>
+            <li>饮料</li>
+            <li>套餐</li>
+            <li>配餐</li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </div>
+    </div>
     <page id="detail" ref="page">
         <div class="detail-header">
             <span @click="backHomtAction()">&lt;</span>
@@ -32,7 +58,7 @@
            <span>公告:1号粥店倾心为你熬粥<b>♡</b>纯天然健康养生粥用心服务每一位顾客</span>
        </div>
        <ul class="detail-nav">
-           <li v-for="(item,index) in titles" :key="index" @click="showAction(index)" :class="{'cur':courId==index}"><span>{{item}}</span></li>
+           <li v-for="(item,index) in titles" :key="index" @click="showAction(index)" :class="{'cur':courId==index}"><span>{{item.name}}</span></li>
        </ul>
 
 <!--  点餐的详情页面  -->
@@ -91,24 +117,28 @@
                         </li>
                 </ul>
                 <div class="big-box">
-                    <!-- <div class="box-nav">
-                        <div class="scroll-nav"> -->
-                            <nav class="sidebar">
-                                <li class="center">热销</li>
-                                <li class="center">优惠</li>
-                                <li>主食</li>
-                                <li>饮料</li>
-                                <li>套餐</li>
-                                <li>配餐</li>
-                                <li>大牌半价套餐</li>
-                                <li>买一送一（5折特惠）</li>
-                                <li>美食天天5折享</li>
-                                <li>饿了么专享套餐</li>
-                                <li>6月份折扣</li>
-                                <li>新品尝鲜</li>
-                            </nav>
-                        <!-- </div>
-                    </div> -->
+                    <div class="scroll-nav">
+                        <div class="sidebar">
+                            <li class="center">热销</li>
+                            <li class="center">优惠</li>
+                            <li>主食</li>
+                            <li>饮料</li>
+                            <li>套餐</li>
+                            <li>配餐</li>
+                            <li>大牌半价套餐</li>
+                            <li>买一送一（5折特惠）</li>
+                            <li>美食天天5折享</li>
+                            <li>饿了么专享套餐</li>
+                             <li>饮料</li>
+                            <li>套餐</li>
+                            <li>配餐</li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                            <li></li>
+                        </div>
+                    </div>
                     <div class="shop-goods">
                         <div class="shop-box">
                             <p class="hot-title">
@@ -136,11 +166,23 @@
             <div class="showMessage-2" v-show="courId==1">
                 <ul class="grade">
                         <li>4.2</li>
-                        <li>商家评分</li>
-                        <li>味道</li>
-                        <li>包装</li>
-                        <li>配置</li>
+                        <li class="detail-li">商家评分</li>
+                        <li class="detail-li">味道<br/><span>3.9</span></li>
+                        <li class="detail-li">包装<span>4.3</span></li>
+                        <li class="detail-li">配送<span>4.1</span></li>
                 </ul>
+                <p class="blank"></p>
+                <div class="comment">
+                    <ul class="comment-nav">
+                        <li>
+                            <a href="#">全部71</a>
+                            <a href="#">满意64</a>
+                            <a href="#">不满意2</a>
+                            <a href="#">有图2</a>
+                        </li>
+                        <li><span></span>只看有内容的评论</li>
+                    </ul>
+                </div>
             </div>
         </keep-alive>
 <!--  商家的详情页面  -->
@@ -201,6 +243,7 @@
             </div>
         </keep-alive>
     </page>
+</div>
 </template>
 
 <script>
@@ -208,9 +251,10 @@ import {getGoodListDetailData} from '../../../services/goodsService.js'
 export default {
     data(){
         return{
-            titles:['点餐','评价','商家'],
+            titles:[{id:'001',name:'点餐'},{id:'002',name:'评价'},{id:'003',name:'商家'}],
             courId:0,
             openShow:false,
+            isLoads:false,
             distance:null,
             listData:[],
         }
@@ -221,21 +265,32 @@ export default {
         },
         showAction(index){
             this.courId = index
+            if(!this.courId==0){
+                this.isLoads = false;
+            }else if(this.courId==0 && this.openShow==true){
+                this.isLoads = true;
+            }
         },
     },
-    // created(){
-    //     this.$center.$on('distance',(result)=>{
-    //         // console.log(result)
-    //         // this.openShow = true
-
-    //     })
-    // },
+    created(){
+        this.$center.$on('distance',(result)=>{
+            if(result < -215){
+                this.openShow = true;
+            }else{
+                this.openShow = false;
+            }
+            if(result < -384 && this.courId==0 && this.openShow==true){
+                this.isLoads = true;
+            }else{
+                this.isLoads = false;
+            }
+        })
+    },
     mounted(){
         getGoodListDetailData().then((result)=>{
             this.listData = result
         })
     }
-    
 }
 </script>
 
@@ -438,15 +493,26 @@ export default {
 .big-box{
     display: flex;
 }
-.sidebar{
+.scroll-nav{
+    height:500px;
+    overflow: hidden;
     width:18%;
-    background: #f8f8f8;
-    padding-left:5px;
+    box-sizing:border-box;
 }
+.sidebar{
+    width:100%;
+    background: #f8f8f8;
+    padding-left:3px;
+    height:800px;
+    overflow-y: auto;
+}
+.sidebar::-webkit-scrollbar{width:0 !important}
 .sidebar li{
-    padding:15px 0;
+    padding:17px 0;
+    height:11px;
     font-size:11px;
     color:#666;
+    line-height:11px;
 }
 .sidebar .center{
     text-align:center;
@@ -518,13 +584,68 @@ export default {
 }
 .main-right h5{
     color:#3f3f3f;
-    font-weight: 700
+    font-weight: 700;
 }
+
 /* 评论的详情页面   */
 .grade{
-    height:100px;
-    display: flex;
+    height:60px;
+    padding:10px 0;
 }
+.grade .detail-li{
+    height:100%;
+    text-align:center;
+    float:left;
+    width:55px;
+    color:#858585;
+    font-size:10px;
+    padding-top:16px;
+}
+.grade li:nth-child(1){
+    height:100%;
+    color:#ff6000;
+    font-size:32px;
+    font-weight:500;
+    width:90px;
+    line-height:60px;
+    float:left;
+    text-align:center;
+}
+.grade li span{
+    font-size:15px;
+    display:block;
+    color:#666;
+    padding-top:3px;
+    
+}
+.comment{
+    padding-left:10px;
+}
+.comment-nav li a{
+    color:#6d7885;
+    font-size:10px;
+    padding:5px 8px;
+    background: #ebf5ff;
+    margin-right:3px;
+    border-radius:2px;
+}
+.comment-nav li{
+    width:100%;
+    height:40px;
+    border-bottom:1px solid #ccc;
+    color:#666;
+    font-size:12px;
+    line-height:40px;
+}
+.comment-nav li span{
+    display: inline-block;
+    width:8px;
+    height:8px;
+    margin:0 5px 0 15px;
+    border-radius: 50%;
+    background: #e8e8e8;
+}
+
 
 
 
@@ -543,7 +664,7 @@ export default {
 }
 .blank{
     width:100%;
-    height:5px;
+    height:8px;
     background:#f5f5f5;
 }
 .serve{
@@ -629,5 +750,23 @@ h5{
 .shop-box{
     overflow: auto;
     height:1000px;
+}
+.shop-box::-webkit-scrollbar{width:0 !important}
+
+/*吸顶的样式*/
+.hidden{
+    width:60px;
+    position:absolute;
+    top:38px;
+    left:0;
+    background: #fff;
+    z-index:99;
+}
+.top{
+    position:absolute;
+    top:0;
+    left:0;
+    z-index:99;
+    background:#fff;
 }
 </style>

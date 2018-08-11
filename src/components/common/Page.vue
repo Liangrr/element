@@ -31,6 +31,9 @@ export default {
             probeType: 3,
             scrollbars:true,
             fadeScrollbars:true,
+            mouseWheel: true, //鼠标滚轮滚动
+            interactiveScrollbars: true, 
+            preventDefault:false //阻止冒泡
         });
         this.scroll = scroll;
         scroll.on('beforeScrollStart', ()=>{
@@ -44,6 +47,7 @@ export default {
             let scrollY = scroll.y;
 //          这里滚动事件传一个对象
             this.$emit('onScroll',{disY,scrollY})
+            // console.log(scroll.y)
         })
        
     }
